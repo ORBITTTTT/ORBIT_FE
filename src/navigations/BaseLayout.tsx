@@ -1,4 +1,4 @@
-import Main from '@pages/Main';
+import Home from '@pages/Home';
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -8,7 +8,7 @@ const BaseLayout = (props: Props) => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Main />} />
+        <Route path="/" element={<Home />} />
       </Routes>
     </BrowserRouter>
   );
