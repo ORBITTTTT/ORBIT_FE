@@ -33,13 +33,13 @@ const PostInfo = (props: Props) => {
       <Row>
         {careerList.map((career: any) => {
           return (
-            <ProjectNumberContainer>
+            <ProjectNumberContainer key={career}>
               <ProjectInfoLabel htmlFor={`${career}Number`}>{career}</ProjectInfoLabel>
               <ProjectNumber>
                 <PlusNumberBtn onClick={handleDecrement}>-</PlusNumberBtn>
                 <ProjectInfoInput
                   type="number"
-                  value={value}
+                  defaultValue={value}
                   min={0}
                   max={10}
                   step={1}
