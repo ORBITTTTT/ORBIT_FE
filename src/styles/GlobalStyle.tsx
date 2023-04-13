@@ -90,9 +90,6 @@ html,
     margin: 0;
     padding: 0;
     border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
   }
   /* HTML5 display-role reset for older browsers */
   article,
@@ -112,7 +109,7 @@ html,
     line-height: 1;
   }
   ol,
-  ul {
+  ul,li {
     list-style: none;
   }
   blockquote,
@@ -135,11 +132,8 @@ html,
   }
 
   * {
-    box-sizing: border-box;
-  }
-  html {
-    font-size: 16px;
     font-family: 'Pretendard', sans-serif;
+    box-sizing: border-box;
   }
   a {
     text-decoration: none;
@@ -152,14 +146,6 @@ html,
     border: 0;
     cursor: pointer;
     color: inherit;
-  }
-  .sr-only {
-    position: absolute;
-    clip: rect(0 0 0 0);
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
   }
   // 스크롤바 제거
   * {
