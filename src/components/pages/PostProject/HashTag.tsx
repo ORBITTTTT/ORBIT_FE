@@ -3,10 +3,16 @@ import styled from 'styled-components';
 
 const HashTag = () => {
   const [hashtagText, setHashtagText] = useState('');
-  const [hashtagList, setHashtagList]: any = useState([]);
+  const [hashtagList, setHashtagList] = useState<string[]>([]);
 
   const HashtagOnchange = (e: ChangeEvent<HTMLInputElement>) => {
     setHashtagText(e.target.value);
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      AddHashtagList();
+    }
   };
 
   const AddHashtagList = () => {
@@ -17,7 +23,7 @@ const HashTag = () => {
     <HashtagContainer>
       <h3>해시태그</h3>
       <Row>
-        <HashtagInput type="text" onChange={HashtagOnchange} />
+        <HashtagInput type="text" onChange={HashtagOnchange} onKeyDown={handleKeyDown} />
         <HashtagBtn onClick={AddHashtagList}>+</HashtagBtn>
       </Row>
       <HashtagList>
