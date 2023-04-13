@@ -21,7 +21,7 @@ const PostProjectContainer = styled.div`
   width: 80%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 140px 0;
+  padding: 120px 0;
   text-align: right;
 `;
 const AddProjectBtn = styled.button`
