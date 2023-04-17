@@ -23,7 +23,7 @@ const MainFind = (props: Props) => {
 export default MainFind;
 
 const Container = styled.div`
-  width: 100%;
+  width:95%;
   background-color: aquamarine;
 `;
 

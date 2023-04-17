@@ -28,20 +28,25 @@ const index = () => {
 export default index;
 
 const Container = styled.div`
-  padding: 3% 5%;
+  /* padding: 3% 5%; */
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 20px;
+  padding-top: 120px;
+  width: 100%;
+    background-color: #ddd;
 `;
 const RowView = styled.div`
   display: flex;
-  width: 100%;
-  background-color: aliceblue;
+  width:95%;
+  /* background-color: #ddd; */
   gap: 2%;
 `;
 
 const Banner = styled.img`
   width: 100%;
   height: 200px;
-  background-color: aquamarine;
+  background-color: #ddd;
 `;

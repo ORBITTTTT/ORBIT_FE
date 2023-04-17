@@ -11,10 +11,12 @@ const Slider = (props: Props) => {
     <Container>
       <Splide aria-labelledby="My Favorite Images">
         <SplideSlide>
-          <img src={assets.angry} alt="Image 1" />
+          {/* <img src={assets.angry} alt="Image 1" /> */}
+          <div style={{minHeight:225}}></div>
         </SplideSlide>
         <SplideSlide>
-          <img src={assets.angry} alt="Image 2" />
+          <div></div>
+          {/* <img src={assets.angry} alt="Image 2" /> */}
         </SplideSlide>
       </Splide>
     </Container>
@@ -26,5 +28,5 @@ export default Slider;
 const Container = styled.div`
   width: 100%;
   height: 225px;
-  background-color: aquamarine;
+  background-color:  #ffffff;
 `;
