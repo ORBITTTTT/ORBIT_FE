@@ -4,6 +4,7 @@ import Home from '@pages/Home';
 import PostProject from '@pages/PostProject';
 import DetailProject from '@pages/DetailProject';
 import Header from '@components/blocks/Header';
+import Mypage from '@components/pages/Mypage';
 
 type Props = {};
 
@@ -15,6 +16,7 @@ const BaseLayout = (props: Props) => {
       </Routes>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/mypage" element={<Mypage />} />
         <Route path="/postproject" element={<PostProject />} />
         <Route path="/project/:id" element={<DetailProject />} />
       </Routes>

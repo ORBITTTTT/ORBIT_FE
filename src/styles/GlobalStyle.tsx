@@ -1,10 +1,23 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
-  /* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
+  @font-face {
+    font-family: 'Pretendard-Bold';
+    src: url('../assets/fonts/Pretendard-Bold.woff2');
+    font-weight: 700;
+  }
+
+  @font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('../assets/fonts/Pretendard-Regular.woff2');
+    font-weight: 400;
+  }
+
+  @font-face {
+    font-family: 'Pretendard-Light';
+    src: url('../assets/fonts/Pretendard-Light.woff2');
+    font-weight: 300;
+  }
 
 html,
   body,
