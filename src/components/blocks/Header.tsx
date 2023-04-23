@@ -1,12 +1,25 @@
 import React, { useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import styled from 'styled-components';
+import LoginModal from '@components/blocks/LoginModal';
+import useOpenModal from '@hooks/modal';
 
 type Props = {};
 
 const Header = (props: Props) => {
   type Search = string;
 
+  function useOpenModal() {
+    const [isOpenModal, setIsOpenModal] = useState(false);
+    const clickModal = () => {
+      setIsOpenModal(true);
+    };
+    const closeModal = () => {
+      setIsOpenModal(false);
+    };
+    return { isOpenModal, clickModal, closeModal };
+  }
+  const { isOpenModal, clickModal, closeModal } = useOpenModal();
   const [search, setSearch] = useState<Search | null>(null);
 
   return (
@@ -15,8 +28,10 @@ const Header = (props: Props) => {
         <Link to="/">로고</Link>
         <p>
           <Link to="/postproject">새 프로젝트 생성</Link>
-          <span>알림</span>
-          <span>로그인 / 회원가입</span>
+          {/* <span>알림</span> */}
+          <span>
+            <span onClick={clickModal}>로그인</span> / <span>회원가입</span>
+          </span>
         </p>
       </div>
       <div>
@@ -31,6 +46,7 @@ const Header = (props: Props) => {
           }}
         />
       </div>
+      {isOpenModal && <LoginModal closeModal={closeModal} />}
     </Container>
   );
 };

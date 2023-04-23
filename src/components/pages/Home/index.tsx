@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Home from './Home';
 import Slider from './Slider';
 import HighView from './HighView';
@@ -7,8 +7,9 @@ import HighLoved from './HighLoved';
 import MainFind from './MainFind';
 import styled from 'styled-components';
 import assets from '@assets';
+import LoginModal from '@components/blocks/LoginModal';
 
-const index = () => {
+const Index = () => {
   return (
     <div>
       <Container>
@@ -25,7 +26,7 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;
 
 const Container = styled.div`
   /* padding: 3% 5%; */
@@ -36,11 +37,11 @@ const Container = styled.div`
   gap: 20px;
   padding-top: 120px;
   width: 100%;
-    background-color: #ddd;
+  background-color: #ddd;
 `;
 const RowView = styled.div`
   display: flex;
-  width:95%;
+  width: 95%;
   /* background-color: #ddd; */
   gap: 2%;
 `;
