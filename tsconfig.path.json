@@ -9,7 +9,8 @@
       "@assets": ["src/assets"],
       "@utils/*": ["src/utils/*"],
       "@apis/*": ["src/apis/*"],
-      "@navs/*": ["src/navigations/*"]
+      "@navs/*": ["src/navigations/*"],
+      "@hooks/*": ["src/hooks/*"]
     }
   }
 }

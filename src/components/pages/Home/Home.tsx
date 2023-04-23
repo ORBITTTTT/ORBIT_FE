@@ -1,7 +1,6 @@
 import React from 'react';
 import assets from '@assets';
 import Button from '@atoms/Button';
-import Clock from '@blocks/Clock';
 import Header from '@components/blocks/Header';
 import styled from 'styled-components';
 
