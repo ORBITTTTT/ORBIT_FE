@@ -19,7 +19,7 @@ const Index = () => {
           <New />
           <HighLoved />
         </RowView>
-        <Banner src={assets.angry} alt="유저 등급제 설명" />
+        <Banner src="" alt="유저 등급제 설명" />
         <MainFind />
       </Container>
     </div>
@@ -37,7 +37,7 @@ const Container = styled.div`
   gap: 20px;
   padding-top: 120px;
   width: 100%;
-  background-color: #ddd;
+  background-color: #ffffff;
 `;
 const RowView = styled.div`
   display: flex;
@@ -47,7 +47,7 @@ const RowView = styled.div`
 `;
 
 const Banner = styled.img`
-  width: 100%;
+  width: 95%;
   height: 200px;
-  background-color: #ddd;
+  background-color: #ff8e72;
 `;

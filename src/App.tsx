@@ -11,7 +11,7 @@ function App() {
   return (
     <RecoilRoot>
       <QueryClientProvider client={queryClient}>
-        <GlobalStyle />
+        {/* <GlobalStyle /> */}
         <GlobalStyle />
         <BaseLayout />
       </QueryClientProvider>

@@ -2,20 +2,20 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
-    font-family: 'Pretendard-Bold';
-    src: url('../assets/fonts/Pretendard-Bold.woff2');
+    font-family: 'Pretendard';
+    src: url('../assets/fonts/Pretendard-Bold.woff2') format('woff2');
     font-weight: 700;
   }
 
   @font-face {
-    font-family: 'Pretendard-Regular';
-    src: url('../assets/fonts/Pretendard-Regular.woff2');
+    font-family: 'Pretendard';
+    src: url('../assets/fonts/Pretendard-Regular.woff2') format('woff2');
     font-weight: 400;
   }
 
   @font-face {
-    font-family: 'Pretendard-Light';
-    src: url('../assets/fonts/Pretendard-Light.woff2');
+    font-family: 'Pretendard';
+    src: url('../assets/fonts/Pretendard-Light.woff2') format('woff2');
     font-weight: 300;
   }
 
@@ -145,7 +145,8 @@ html,
   }
 
   * {
-    font-family: 'Pretendard', sans-serif;
+    font-family: 'Pretendard',Pretendard,
+     sans-serif;
     box-sizing: border-box;
   }
   a {
