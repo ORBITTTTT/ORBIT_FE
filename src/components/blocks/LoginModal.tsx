@@ -1,28 +1,48 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import Profile from './signup/Profile';
+import Job from './signup/Job';
+import Interest from './signup/Interest';
 
-type Props = { closeModal?: () => void };
+type Props = { closeModal?: () => void; active: boolean };
 
-const LoginModal = ({ closeModal }: Props) => {
+type Data = {
+  profile_img?: string;
+  name: string;
+  job: string;
+  interest: [];
+  introduce?: string;
+  link?: [];
+};
+
+const LoginModal = ({ closeModal, active }: Props) => {
+  const [page, setPage] = useState<number>(1);
+  const [data, setData] = useState<Data>({ name: '', job: '', interest: [] });
+  console.log(data);
   return (
     <ModalWrap>
       <ModalBackGround onClick={closeModal} />
       <ModalContainer>
         <Close onClick={closeModal}>
-          <p></p>X
+          <p>X</p>
         </Close>
-        <h2>간편 로그인</h2>
-        <Main>
-          <p>
-            <strong>카카오톡</strong> 계정으로 시작하기
-          </p>
-          <p>
-            <strong>Github</strong> 계정으로 시작하기
-          </p>
-          <p>
-            <strong>Gmail</strong> 계정으로 시작하기
-          </p>
-        </Main>
+        {active && (
+          <Main>
+            <h3>간편 로그인</h3>
+            <p>
+              <strong>카카오톡</strong> 계정으로 시작하기
+            </p>
+            <p>
+              <strong>Github</strong> 계정으로 시작하기
+            </p>
+            <p>
+              <strong>Gmail</strong> 계정으로 시작하기
+            </p>
+          </Main>
+        )}
+        {!active && page === 1 && <Profile data={data} setData={setData} setPage={setPage} page={page} />}
+        {!active && page === 2 && <Job data={data} setData={setData} setPage={setPage} page={page} />}
+        {!active && page === 3 && <Interest data={data} setData={setData} setPage={setPage} page={page} />}
       </ModalContainer>
     </ModalWrap>
   );
@@ -37,6 +57,7 @@ const ModalBackGround = styled.div`
   position: absolute;
   bottom: 0;
   left: 0;
+  z-index: 5;
 `;
 
 const ModalWrap = styled.div`
@@ -45,22 +66,28 @@ const ModalWrap = styled.div`
   left: 0;
   bottom: 0;
   right: 0;
-  z-index: 1;
+  width: 100%;
+  height: 100vh;
+  z-index: 5;
 `;
 
 const ModalContainer = styled.div`
   position: fixed;
   left: 50%;
   top: 50%;
+  z-index: 88;
   transform: translate(-50%, -50%);
   max-width: 960px;
-  width: 30%;
+  width: 480px;
+  height: 630px;
+  justify-content: center;
   text-align: center;
   font-size: 1em;
   background-color: white;
   padding: 5%;
   display: flex;
   flex-direction: column;
+  z-index: 5;
 `;
 
 const Main = styled.div`
@@ -68,6 +95,7 @@ const Main = styled.div`
   flex-direction: column;
   gap: 20px;
   margin-top: 30px;
+  z-index: 5;
   p {
     padding: 3% 5%;
     border: 1px solid black;
@@ -75,8 +103,12 @@ const Main = styled.div`
 `;
 
 const Close = styled.div`
+  position: absolute;
   display: flex;
   justify-content: space-between;
-  font-weight: 600;
   font-size: 24px;
+  z-index: 5;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
 `;

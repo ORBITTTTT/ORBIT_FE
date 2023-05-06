@@ -2,22 +2,28 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
-    font-family: 'Pretendard-Bold';
-    src: url('../assets/fonts/Pretendard-Bold.woff2');
+    font-family: 'Pretendard';
+    src: url('../assets/fonts/Pretendard-Bold.woff2') format('woff2');
     font-weight: 700;
   }
 
   @font-face {
-    font-family: 'Pretendard-Regular';
-    src: url('../assets/fonts/Pretendard-Regular.woff2');
+    font-family: 'Pretendard';
+    src: url('../assets/fonts/Pretendard-Regular.woff2') format('woff2');
     font-weight: 400;
   }
 
   @font-face {
-    font-family: 'Pretendard-Light';
-    src: url('../assets/fonts/Pretendard-Light.woff2');
+    font-family: 'Pretendard';
+    src: url('../assets/fonts/Pretendard-Light.woff2') format('woff2');
     font-weight: 300;
   }
+  @font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
 
 html,
   body,
@@ -145,7 +151,8 @@ html,
   }
 
   * {
-    font-family: 'Pretendard', sans-serif;
+    font-family: 'Pretendard-Regular',Pretendard,
+     sans-serif;
     box-sizing: border-box;
   }
   a {

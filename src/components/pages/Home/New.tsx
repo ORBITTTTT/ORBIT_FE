@@ -18,15 +18,6 @@ const New = (props: Props) => {
       like: 4,
       view: 23,
     },
-    {
-      tag1: '자바스크립트',
-      tag2: '자바',
-      title: '프로젝트1',
-      desc: '이 프로젝트는 영국에서 시작되어 서울까지 번진 그런 프로젝트로 기깔나고 미친 듯한 팀원과 함께 이 모험을 함께 떠날 사람을 구합니다.',
-      maker: { name: '안녕토마스', roket: '10' },
-      like: 4,
-      view: 23,
-    },
   ];
 
   return (
@@ -44,7 +35,7 @@ const New = (props: Props) => {
       <ProjectOuter>
         {list.map((v, i) => (
           <ProjectBox>
-            <div>
+            <ProjectMain>
               <ProjectTop>
                 <p>
                   <span>프론트엔드</span>
@@ -72,7 +63,7 @@ const New = (props: Props) => {
                   <span>{v.view}</span>
                 </p>
               </ProjectBottom>
-            </div>
+            </ProjectMain>
             <ProjectMaker>
               <p>프론트앤드</p>
               <img src="" alt="" />
@@ -91,7 +82,7 @@ export default New;
 
 const Container = styled.div`
   width: 60%;
-  background-color: #ddd;
+  /* background-color: #ddd; */
 
   /* height: 300px; */
 `;
@@ -119,6 +110,7 @@ const ProjectOuter = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  height: 80%;
 `;
 
 const ProjectBox = styled.div`
@@ -127,13 +119,16 @@ const ProjectBox = styled.div`
   background-color: white;
   gap: 10px;
   border-radius: 10px;
-  div:nth-child(1) {
-    /* width: 100%; */
-    padding: 2%;
-  }
-  div:nth-child(1) {
-    /* width: 20%; */
-  }
+  border: 2px solid #e1e1e1;
+  height: 100%;
+  /* background-color: #e1e1e1; */
+  align-items: center;
+`;
+
+const ProjectMain = styled.div`
+  height: 90%;
+  padding: 2%;
+  /* background-color: aliceblue; */
 `;
 
 const ProjectTop = styled.div`
@@ -141,6 +136,7 @@ const ProjectTop = styled.div`
   justify-content: space-between;
   font-size: 12px;
   align-items: center;
+  height: 10%;
   p:nth-child(1) {
     gap: 5px;
     display: flex;
@@ -156,12 +152,17 @@ const ProjectTop = styled.div`
 const ProjectMid = styled.div`
   display: flex;
   flex-direction: column;
+  height: 70%;
   gap: 10px;
+  justify-content: center;
   div:nth-child(1) {
-    font-size: 18px;
+    font-size: 19px;
+    font-weight: bold;
   }
   div:nth-child(2) {
     font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
   }
 `;
 
@@ -169,6 +170,7 @@ const ProjectTag = styled.div`
   display: flex;
   font-size: 12px;
   gap: 5px;
+  height: 8%;
 `;
 
 const ProjectBottom = styled.div`
@@ -176,6 +178,7 @@ const ProjectBottom = styled.div`
   justify-content: space-between;
   align-items: center;
   font-size: 12px;
+  height: 10%;
   p:nth-child(2) {
     display: flex;
     gap: 5px;
@@ -200,15 +203,34 @@ const ProjectMaker = styled.div`
   align-items: center;
   border-left: 1px solid gray;
   font-size: 13px;
-  gap: 5px;
+  gap: 10px;
   padding: 2%;
+  height: 90%;
   img {
-    width: 40px;
-    height: 40px;
+    width: 74px;
+    height: 74px;
     background-color: aliceblue;
     border-radius: 50%;
   }
   div {
-    font-size: 18px;
+    font-size: 19px;
+    font-weight: bold;
+  }
+  p:nth-child(1) {
+    color: blue;
+    border: 1px solid blue;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 11px;
+  }
+  p:nth-child(3) {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+  }
+  p:nth-child(5) {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
   }
 `;

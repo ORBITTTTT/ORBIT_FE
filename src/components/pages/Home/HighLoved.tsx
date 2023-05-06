@@ -17,7 +17,7 @@ const HighLoved = (props: Props) => {
       <Head>
         <ProjectTitle>
           <div>인기있는 프로젝트</div>
-          <p>기준</p>
+          <p>23.04.04 21:00 기준</p>
         </ProjectTitle>
         <div>더보기</div>
       </Head>
@@ -25,15 +25,14 @@ const HighLoved = (props: Props) => {
         {list.map((v, i) => (
           <ProjectBox>
             <div>
+              <span>{i + 1}</span>
+            </div>
+            <div>
+              <div>#프론트</div>
               <div>
-                <span>{i + 1}</span>
-              </div>
-              <div>
-                <p>#프론트</p>
-                <p>{v.name}</p>
+                <p>{v.name}</p> <p>하트 {v.view}</p>
               </div>
             </div>
-            <p>눈{v.view}</p>
           </ProjectBox>
         ))}
       </List>
@@ -45,7 +44,7 @@ export default HighLoved;
 
 const Container = styled.div`
   width: 38%;
-  background-color: #ddd;
+  /* background-color: #ddd; */
   /* height: 300px; */
 `;
 
@@ -56,6 +55,10 @@ const Head = styled.div`
   margin-bottom: 20px;
   div {
     text-align: left;
+    p {
+      font-size: 12px;
+      color: #7e7e7e;
+    }
   }
 `;
 const ProjectTitle = styled.div`
@@ -64,6 +67,8 @@ const ProjectTitle = styled.div`
   gap: 10px;
   div {
     font-size: 18px;
+    font-family: Pretendard;
+
     font-weight: bold;
   }
 `;
@@ -76,25 +81,47 @@ const List = styled.div`
 
 const ProjectBox = styled.div`
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
   background-color: white;
   padding: 11px;
+  width: 100%;
+  gap: 10px;
   div {
     display: flex;
     gap: 10px;
-    align-items: center;
-
+    /* align-items: center; */
+    flex-direction: column;
+    width: 100%;
+    div:nth-child(1) {
+      width: 100%;
+      font-size: 12px;
+      font-weight: 500;
+      color: #a2a2a2;
+    }
     div:nth-child(2) {
       display: flex;
-      flex-direction: column;
-      p:nth-child(1){
-        font-size: 10px;
+      flex-direction: row;
+      align-items: baseline;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+      p:nth-child(1) {
+        font-size: 16px;
+        font-weight: 600;
       }
-      p:nth-child(2){
-        font-size: 18px;
-        font-weight: bold;
+      p:nth-child(2) {
+        font-size: 12px;
+        font-weight: 400;
       }
+    }
+  }
+  div:nth-child(1) {
+    width: 10%;
+    span {
+      font-size: 19px;
+      font-weight: bold;
+      color: #7e7e7e;
     }
   }
 `;
