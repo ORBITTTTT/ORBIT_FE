@@ -54,8 +54,7 @@ const HighView = (props: Props) => {
           height: '19rem',
           rewind: true,
           gap: '1rem',
-          padding: '4%'
-          
+          padding: '4%',
         }}
       >
         {list.map((v, i) => (
@@ -219,7 +218,7 @@ const ProjectMid = styled.div`
 
 const ProjectTag = styled.div`
   display: flex;
-  font-size: 12px;
+  font-size: 13px;
   gap: 5px;
   span {
     font-weight: bold;
@@ -230,7 +229,7 @@ const ProjectBottom = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 12px;
+  font-size: 13px;
   p:nth-child(2) {
     display: flex;
     gap: 5px;

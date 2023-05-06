@@ -24,33 +24,37 @@ const Header = (props: Props) => {
   const [search, setSearch] = useState<Search | null>(null);
 
   return (
-    <Container>
-      <div>
-        <Link to="/">
-          <img src={assets.logo} style={{ width: '70%' }} />
-        </Link>
-        <p>
-          <span>오비티 소개</span>
-          <span>프로젝트 목록</span>
-        </p>
-      </div>
-      <div>
-        <input
-          type="text"
-          onChange={(e) => {
-            setSearch(e.target.value);
-          }}
-        />
-        <p>
-          {/* <span>알림</span> */}
-          <span onClick={clickModal}>
-            <span>로그인 | 회원가입</span>
-          </span>{' '}
-          <Link to="/postproject" style={{color:'white', backgroundColor:'#526CFE',padding:10}}>새 프로젝트 생성</Link>
-        </p>
-      </div>
-      {isOpenModal && <LoginModal closeModal={closeModal} />}
-    </Container>
+    <div>
+      <Container>
+        <div>
+          <Link to="/">
+            <img src={assets.logo} style={{ width: 100 }} />
+          </Link>
+          <p>
+            <span>오비티 소개</span>
+            <span>프로젝트 목록</span>
+          </p>
+        </div>
+        <div>
+          <input
+            type="text"
+            onChange={(e) => {
+              setSearch(e.target.value);
+            }}
+          />
+          <p>
+            {/* <span>알림</span> */}
+            <span onClick={clickModal}>
+              <span>로그인 | 회원가입</span>
+            </span>{' '}
+            <Link to="/postproject" style={{ color: 'white', backgroundColor: '#526CFE', padding: 10 }}>
+              새 프로젝트 생성
+            </Link>
+          </p>
+        </div>
+      </Container>
+      {isOpenModal && <LoginModal closeModal={closeModal} active={false} />}
+    </div>
   );
 };
 
@@ -65,7 +69,7 @@ const Container = styled.div`
   z-index: 99;
   display: flex;
   align-items: center;
-  /* flex-direction: column; */
+
   gap: 10px;
   padding: 20px;
   div {
@@ -85,7 +89,9 @@ const Container = styled.div`
       gap: 10px;
       font-weight: 500;
       align-items: center;
-      
+      span {
+        cursor: pointer;
+      }
     }
     @media screen and (max-width: 900px) {
       flex-direction: column;
