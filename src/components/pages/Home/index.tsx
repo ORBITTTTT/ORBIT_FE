@@ -19,8 +19,9 @@ const Index = () => {
           <New />
           <HighLoved />
         </RowView>
-        <Banner src="" alt="유저 등급제 설명" />
+        <Banner src="" />
         <MainFind />
+        <footer>ALL RIGHT RESERVED ORBITY</footer>
       </Container>
     </div>
   );
@@ -38,6 +39,16 @@ const Container = styled.div`
   padding-top: 120px;
   width: 100%;
   background-color: #ffffff;
+
+  footer {
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: blanchedalmond;
+    width: 100%;
+    font-weight: 300;
+  }
 `;
 const RowView = styled.div`
   display: flex;

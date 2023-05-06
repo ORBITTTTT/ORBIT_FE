@@ -25,15 +25,14 @@ const HighLoved = (props: Props) => {
         {list.map((v, i) => (
           <ProjectBox>
             <div>
+              <span>{i + 1}</span>
+            </div>
+            <div>
+              <div>#프론트</div>
               <div>
-                <span>{i + 1}</span>
-              </div>
-              <div>
-                <p>#프론트</p>
-                <p>{v.name}</p>
+                <p>{v.name}</p> <p>하트 {v.view}</p>
               </div>
             </div>
-            <p>하트 {v.view}</p>
           </ProjectBox>
         ))}
       </List>
@@ -82,34 +81,47 @@ const List = styled.div`
 
 const ProjectBox = styled.div`
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
   background-color: white;
   padding: 11px;
+  width: 100%;
+  gap: 10px;
   div {
     display: flex;
     gap: 10px;
-    align-items: center;
-    div {
-      span {
-        font-size: 19px;
-        font-weight: bold;
-        color: #7e7e7e;
-      }
+    /* align-items: center; */
+    flex-direction: column;
+    width: 100%;
+    div:nth-child(1) {
+      width: 100%;
+      font-size: 12px;
+      font-weight: 500;
+      color: #a2a2a2;
     }
     div:nth-child(2) {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: baseline;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
       p:nth-child(1) {
-        font-size: 12px;
-        font-weight: 500;
-        color: #a2a2a2;
-      }
-      p:nth-child(2) {
         font-size: 16px;
         font-weight: 600;
       }
+      p:nth-child(2) {
+        font-size: 12px;
+        font-weight: 400;
+      }
+    }
+  }
+  div:nth-child(1) {
+    width: 10%;
+    span {
+      font-size: 19px;
+      font-weight: bold;
+      color: #7e7e7e;
     }
   }
 `;
