@@ -1,8 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 import assets from '@assets';
-
-type Props = { page?: number; setData: Function; data: {}; setPage: Function };
+interface Data {
+  profile_img?: string;
+  name?: string;
+  job?: string;
+  interest?: string[];
+  introduce?: string;
+  link?: {
+    name?: string | null | undefined;
+    linkname?: string | null | undefined;
+  }[];
+}
+type Props = { page?: number; setData: Function; data: Data; setPage: Function };
 
 const Job = ({ data, setData, page, setPage }: Props) => {
   return (
@@ -114,6 +124,7 @@ const Bottom = styled.div`
     padding: 3%;
     font-size: 14px;
     font-weight: 300;
+    cursor: pointer;
     border-radius: 10px;
   }
   span {

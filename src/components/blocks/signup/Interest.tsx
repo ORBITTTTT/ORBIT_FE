@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import styled from 'styled-components';
 import assets from '@assets';
+interface Data {
+  profile_img?: string;
+  name?: string;
+  job?: string;
+  interest?: string[];
+  introduce?: string;
+  link?: {
+    name?: string | null | undefined;
+    linkname?: string | null | undefined;
+  }[];
+}
 
-type Props = { page?: number; setData: Function; data: {}; setPage: Function };
+type Props = { page?: number; setData: Dispatch<SetStateAction<Data>>; data: Data; setPage: Function };
 
 const Interest = ({ data, setData, page, setPage }: Props) => {
   const tech = [
@@ -20,7 +31,9 @@ const Interest = ({ data, setData, page, setPage }: Props) => {
     'NestJs',
     'Express',
   ];
-
+  // const list: string[] = [];
+  const [list, setList] = useState<string[]>([]);
+  console.log(list);
   return (
     <Wrap>
       <Top>
@@ -33,13 +46,29 @@ const Interest = ({ data, setData, page, setPage }: Props) => {
             src={`https://img.shields.io/badge/${v}-E1E1E1?style=for-the-badge&logo=${v}&logoColor=black`}
             key={i}
             onClick={() => {
-              setData({ ...data, Interest: [] });
+              if (list.includes(v)) {
+                let c = list.filter((a) => {
+                  return a !== v;
+                });
+                setList(c);
+              } else {
+                list.push(v);
+              }
+              console.log(list);
             }}
           />
         ))}
       </Mid>
       <Bottom>
-        <div onClick={() => setPage(4)}>계속하기</div>
+        <div
+          onClick={() => {
+            setData({ ...data, interest: list });
+
+            setPage(4);
+          }}
+        >
+          계속하기
+        </div>
         <span>{page}/4</span>
       </Bottom>
     </Wrap>
@@ -79,12 +108,12 @@ const Mid = styled.div`
 
   /* background-color: antiquewhite; */
   display: flex;
-  /* width: 80%; */
+  width: 100%;
   /* flex-direction: column; */
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 4%;
+  gap: 5px;
   img {
     border: #161616 1px solid;
   }
@@ -105,6 +134,7 @@ const Bottom = styled.div`
     padding: 3%;
     font-size: 14px;
     font-weight: 300;
+    cursor: pointer;
     border-radius: 10px;
   }
   span {
