@@ -58,7 +58,7 @@ const HighView = (props: Props) => {
         }}
       >
         {list.map((v, i) => (
-          <SplideSlide>
+          <SplideSlide key={i}>
             <ProjectBox>
               <ProjectTop>
                 <p>
@@ -92,7 +92,7 @@ const HighView = (props: Props) => {
         ))}
 
         {list.map((v, i) => (
-          <SplideSlide>
+          <SplideSlide key={i}>
             <ProjectBox>
               <ProjectTop>
                 <p>

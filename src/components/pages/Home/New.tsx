@@ -34,7 +34,7 @@ const New = (props: Props) => {
       </Head>
       <ProjectOuter>
         {list.map((v, i) => (
-          <ProjectBox>
+          <ProjectBox key={i}>
             <ProjectMain>
               <ProjectTop>
                 <p>

@@ -1,10 +1,57 @@
+import { restApi } from '@apis/index';
 import assets from '@assets';
-import React, { Dispatch, SetStateAction } from 'react';
+import { getCookie } from '@utils/Cookie';
+import { type } from 'os';
+import React, { Dispatch, SetStateAction, useRef } from 'react';
 import styled from 'styled-components';
+import { BsPencil } from 'react-icons/bs';
 
-type Props = { page?: number; setData: Function; data: {}; setPage: Function };
+interface Data {
+  profile_img?: string;
+  name?: string;
+  job?: string;
+  interest?: string[];
+  introduce?: string;
+  link?: {
+    name?: string | null | undefined;
+    linkname?: string | null | undefined;
+  }[];
+}
+
+type SaveImg = {
+  e: React.ChangeEvent<HTMLInputElement>;
+  fileInputRef: any;
+  setData: Dispatch<SetStateAction<Data>>;
+  data: {};
+};
+
+type Props = { page?: number; setData: Dispatch<SetStateAction<Data>>; data: Data; setPage: Function };
 
 const Profile = ({ data, setData, page, setPage }: Props) => {
+  const fileInputRef = useRef<any>(null);
+
+  const saveFileImage = async ({ e, fileInputRef, setData, data }: SaveImg) => {
+    e.preventDefault();
+    const formdata = new FormData();
+    console.log(fileInputRef?.current.files[0].size);
+    if (fileInputRef?.current.files[0].size > 5000000) {
+      return;
+    }
+    formdata.append('filedata', fileInputRef?.current.files[0]);
+    formdata.append('service', 'profile');
+
+    const access_token = getCookie('access_token');
+    await restApi
+      .post('/files', formdata, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${access_token}`,
+        },
+      })
+      .then((res) => {})
+      .catch((err) => {});
+  };
+
   return (
     <Wrap>
       <Top>
@@ -13,12 +60,25 @@ const Profile = ({ data, setData, page, setPage }: Props) => {
         <p>(선택하지 않을 시 기본 사진으로 등록됩니다.)</p>
       </Top>
       <Mid>
-        <img src={assets.profile} />
+        <ImgWrap>
+          <img src={assets.profile} />
+          <Pencil onClick={() => fileInputRef.current.click()}>
+            <BsPencil color="white" />
+          </Pencil>
+        </ImgWrap>
         <input
           type="text"
           maxLength={20}
           placeholder="닉네임을 입력하세요 (20자이내)"
           onChange={(e) => setData({ ...data, name: e.target.value })}
+        />
+        <input
+          name="imgUpload"
+          type="file"
+          accept="image/jpg, image/jpeg, image/png"
+          ref={fileInputRef}
+          onChange={(e) => saveFileImage({ e, fileInputRef, setData, data })}
+          style={{ display: 'none' }}
         />
       </Mid>
       <Bottom>
@@ -38,7 +98,30 @@ const Wrap = styled.div`
   flex-direction: column;
   justify-content: space-between;
 `;
+const ImgWrap = styled.div`
+  /* background-color: aliceblue; */
+  gap: 0;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
+const Pencil = styled.div`
+  background-color: #526cfe;
+  padding: 8px;
+  width: 30px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  border-radius: 50%;
+  position: absolute;
+  top: 63%;
+  left: 60%;
+  cursor: pointer;
+`;
 const Top = styled.div`
   height: 25%;
   /* background-color: antiquewhite; */
@@ -95,6 +178,8 @@ const Bottom = styled.div`
     font-size: 14px;
     font-weight: 300;
     border-radius: 10px;
+  cursor: pointer;
+
   }
   span {
     font-size: 11px;
