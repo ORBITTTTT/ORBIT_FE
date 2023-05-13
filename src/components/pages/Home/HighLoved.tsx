@@ -23,7 +23,7 @@ const HighLoved = (props: Props) => {
       </Head>
       <List>
         {list.map((v, i) => (
-          <ProjectBox>
+          <ProjectBox key={i}>
             <div>
               <span>{i + 1}</span>
             </div>
