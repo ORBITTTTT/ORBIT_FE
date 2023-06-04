@@ -79,6 +79,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 80px;
   /* gap: 50px; */
   padding: 20px 80px;
   div {
