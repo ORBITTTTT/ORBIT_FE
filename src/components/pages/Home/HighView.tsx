@@ -4,6 +4,7 @@ import { Splide, SplideSlide } from '@splidejs/react-splide';
 // import '@splidejs/react-splide/css';
 import assets from '@assets';
 import '@splidejs/react-splide/css/skyblue';
+import { AiFillEye, AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 
 type Props = {};
 
@@ -51,7 +52,7 @@ const HighView = (props: Props) => {
         aria-labelledby="My Favorite Images"
         options={{
           perPage: 3,
-          height: '19rem',
+          height: '21rem',
           rewind: true,
           gap: '1rem',
           padding: '4%',
@@ -65,7 +66,7 @@ const HighView = (props: Props) => {
                   <span>프론트엔드</span>
                   <span>백엔드</span>
                 </p>
-                <p>하뚜</p>
+                <p><AiOutlineHeart/></p>
               </ProjectTop>
               <ProjectMid>
                 <div>{v.title}</div>
@@ -81,9 +82,9 @@ const HighView = (props: Props) => {
                   {v.maker.name}({v.maker.roket}KM)
                 </p>
                 <p>
-                  <span>하트</span>
+                  <span><AiFillHeart/></span>
                   <span>{v.like}</span>
-                  <span>눈</span>
+                  <span><AiFillEye/></span>
                   <span>{v.view}</span>
                 </p>
               </ProjectBottom>
@@ -99,7 +100,7 @@ const HighView = (props: Props) => {
                   <span>프론트엔드</span>
                   <span>백엔드</span>
                 </p>
-                <p>하뚜</p>
+                <p><AiOutlineHeart/></p>
               </ProjectTop>
               <ProjectMid>
                 <div>{v.title}</div>
@@ -115,9 +116,9 @@ const HighView = (props: Props) => {
                   {v.maker.name}({v.maker.roket}KM)
                 </p>
                 <p>
-                  <span>하트</span>
+                  <span><AiFillHeart/></span>
                   <span>{v.like}</span>
-                  <span>눈</span>
+                  <span><AiFillEye/></span>
                   <span>{v.view}</span>
                 </p>
               </ProjectBottom>
@@ -133,7 +134,7 @@ export default HighView;
 
 const Container = styled.div`
   /* width: 100%; */
-  height: 400px;
+  /* height: 28rem; */
   /* background-color: #ffffff; */
   /* margin: 0 3% */
   width: 95%;
@@ -143,7 +144,7 @@ const Head = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  margin-bottom: 30px;
+  margin-bottom: 0px;
   div {
     text-align: left;
   }
@@ -168,7 +169,7 @@ const ProjectBox = styled.div`
   border-radius: 10px;
   padding: 4%;
   gap: 15px;
-  margin-top: 10px;
+  padding-block: 30px;
   box-shadow: 0px 10px 60px rgba(138, 149, 158, 0.2);
 `;
 

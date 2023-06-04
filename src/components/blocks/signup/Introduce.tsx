@@ -79,7 +79,7 @@ const Introduce = ({ data, setData, page, setPage }: Props) => {
               value={name ? name : ''}
             />
             <AiOutlinePlusCircle
-              color="#526cfe"
+              color="#1560FB"
               size={'1.2em'}
               onClick={() => {
                 const detail = { name: title, linkname: name };
@@ -181,7 +181,7 @@ const LinkInput = styled.div`
   }
   div {
     color: white;
-    background-color: #526cfe;
+    background-color: #1560fb;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -204,22 +204,23 @@ const LinkList = styled.div`
     width: 20%;
     padding: 4px;
     display: flex;
-    font-size: 14px;
-
+    font-size: 11px;
+    color: #a2a2a2;
     justify-content: flex-start;
   }
   div:nth-child(4) {
-    font-size: 14px;
+    font-size: 11px;
     width: 65%;
     justify-content: flex-start;
     display: flex;
+    color: #a2a2a2;
 
     padding: 4px;
     border: none;
   }
   div:nth-child(1) {
     color: white;
-    background-color: #526cfe;
+    background-color: #1560fb;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -228,6 +229,7 @@ const LinkList = styled.div`
   }
   p {
     height: 24px;
+    color: #a2a2a2;
     border-left: 0.5px solid;
   }
 `;
@@ -241,7 +243,7 @@ const Bottom = styled.div`
   gap: 20px;
   /* background-color: antiquewhite; */
   div {
-    background-color: #526cfe;
+    background-color: #1560fb;
     width: 30%;
     color: white;
     padding: 3%;

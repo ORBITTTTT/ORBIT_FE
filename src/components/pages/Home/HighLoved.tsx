@@ -1,4 +1,5 @@
 import React from 'react';
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import styled from 'styled-components';
 
 type Props = {};
@@ -30,7 +31,7 @@ const HighLoved = (props: Props) => {
             <div>
               <div>#프론트</div>
               <div>
-                <p>{v.name}</p> <p>하트 {v.view}</p>
+                <p>{v.name}</p> <p><AiFillHeart/> {v.view}</p>
               </div>
             </div>
           </ProjectBox>

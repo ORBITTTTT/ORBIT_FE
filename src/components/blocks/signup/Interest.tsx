@@ -56,6 +56,11 @@ const Interest = ({ data, setData, page, setPage }: Props) => {
               }
               console.log(list);
             }}
+            style={{
+              backgroundColor: 'red',
+              borderRadius: 10,
+              border: list.includes(v) ? '1px solid red' : '1px solid black',
+            }}
           />
         ))}
       </Mid>
@@ -128,7 +133,7 @@ const Bottom = styled.div`
   gap: 20px;
   /* background-color: antiquewhite; */
   div {
-    background-color: #526cfe;
+    background-color: #1560fb;
     width: 30%;
     color: white;
     padding: 3%;

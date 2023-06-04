@@ -109,7 +109,7 @@ const ImgWrap = styled.div`
 `;
 
 const Pencil = styled.div`
-  background-color: #526cfe;
+  background-color: #1560fb;
   padding: 8px;
   width: 30px;
   height: 30px;
@@ -171,15 +171,14 @@ const Bottom = styled.div`
   gap: 20px;
   /* background-color: antiquewhite; */
   div {
-    background-color: #526cfe;
+    background-color: #1560fb;
     width: 30%;
     color: white;
     padding: 3%;
     font-size: 14px;
     font-weight: 300;
     border-radius: 10px;
-  cursor: pointer;
-
+    cursor: pointer;
   }
   span {
     font-size: 11px;
