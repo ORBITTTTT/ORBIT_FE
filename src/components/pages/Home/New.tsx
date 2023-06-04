@@ -4,6 +4,8 @@ import { Splide, SplideSlide } from '@splidejs/react-splide';
 // import '@splidejs/react-splide/css';
 import assets from '@assets';
 import '@splidejs/react-splide/css/skyblue';
+import { AiFillEye, AiFillHeart } from 'react-icons/ai';
+import { BiRefresh } from 'react-icons/bi';
 
 type Props = {};
 
@@ -29,7 +31,7 @@ const New = (props: Props) => {
         </ProjectTitle>
         <div>
           <p>더보기</p>
-          <p>새로고침</p>
+          <BiRefresh size="25" />
         </div>
       </Head>
       <ProjectOuter>
@@ -57,9 +59,13 @@ const New = (props: Props) => {
                   {v.maker.name}({v.maker.roket}KM)
                 </p>
                 <p>
-                  <span>하트</span>
+                  <span>
+                    <AiFillHeart />
+                  </span>
                   <span>{v.like}</span>
-                  <span>눈</span>
+                  <span>
+                    <AiFillEye />
+                  </span>
                   <span>{v.view}</span>
                 </p>
               </ProjectBottom>

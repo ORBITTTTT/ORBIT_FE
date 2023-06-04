@@ -204,15 +204,16 @@ const LinkList = styled.div`
     width: 20%;
     padding: 4px;
     display: flex;
-    font-size: 14px;
-
+    font-size: 11px;
+    color: #A2A2A2;
     justify-content: flex-start;
   }
   div:nth-child(4) {
-    font-size: 14px;
+    font-size: 11px;
     width: 65%;
     justify-content: flex-start;
     display: flex;
+    color: #A2A2A2;
 
     padding: 4px;
     border: none;
@@ -228,7 +229,8 @@ const LinkList = styled.div`
   }
   p {
     height: 24px;
-    border-left: 0.5px solid;
+    color: #A2A2A2;
+    border-left: 0.5px solid ;
   }
 `;
 const Bottom = styled.div`

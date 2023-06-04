@@ -45,9 +45,18 @@ const Header = (props: Props) => {
           <p>
             {/* <span>알림</span> */}
             <span onClick={clickModal}>
-              <span>로그인 | 회원가입</span>
+              <span style={{ fontSize: 14 }}>로그인 | 회원가입</span>
             </span>{' '}
-            <Link to="/postproject" style={{ color: 'white', backgroundColor: '#526CFE', padding: 10 }}>
+            <Link
+              to="/postproject"
+              style={{
+                color: 'white',
+                backgroundColor: '#526CFE',
+                padding: '10px 30px',
+                fontSize: 14,
+                borderRadius: 5,
+              }}
+            >
               새 프로젝트 생성
             </Link>
           </p>
@@ -69,24 +78,28 @@ const Container = styled.div`
   z-index: 99;
   display: flex;
   align-items: center;
-
-  gap: 10px;
-  padding: 20px;
+  justify-content: space-between;
+  /* gap: 50px; */
+  padding: 20px 80px;
   div {
-    width: 100%;
+    /* width: 100%; */
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 50px;
     /* background-color: #a17979; */
     /* justify-content: space-between; */
+    @media screen and (max-width: 900px) {
+      gap: 20px;
+    }
     input {
       border: none;
       border-bottom: 1px solid #d9d9d9;
-      width: 40%;
+      width: 200;
     }
     p {
       display: flex;
-      gap: 10px;
+      gap: 50px;
+
       font-weight: 500;
       align-items: center;
       span {
