@@ -51,7 +51,7 @@ const Header = (props: Props) => {
               to="/postproject"
               style={{
                 color: 'white',
-                backgroundColor: '#526CFE',
+                backgroundColor: '#1560FB',
                 padding: '10px 30px',
                 fontSize: 14,
                 borderRadius: 5,

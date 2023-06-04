@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import assets from '@assets';
 interface Data {
   profile_img?: string;
@@ -26,6 +26,7 @@ const Job = ({ data, setData, page, setPage }: Props) => {
           onClick={() => {
             setData({ ...data, job: 'FE' });
           }}
+          style={{ backgroundColor: data.job === 'FE' ? '#1560FB' : undefined }}
         >
           프론트엔드
         </div>
@@ -33,6 +34,7 @@ const Job = ({ data, setData, page, setPage }: Props) => {
           onClick={() => {
             setData({ ...data, job: 'BE' });
           }}
+          style={{ backgroundColor: data.job === 'BE' ? '#1560FB' : undefined }}
         >
           백엔드
         </div>
@@ -40,6 +42,7 @@ const Job = ({ data, setData, page, setPage }: Props) => {
           onClick={() => {
             setData({ ...data, job: 'DE' });
           }}
+          style={{ backgroundColor: data.job === 'DE' ? '#1560FB' : undefined }}
         >
           디자이너
         </div>
@@ -47,6 +50,7 @@ const Job = ({ data, setData, page, setPage }: Props) => {
           onClick={() => {
             setData({ ...data, job: 'PM' });
           }}
+          style={{ backgroundColor: data.job === 'PM' ? '#1560FB' : undefined }}
         >
           PM
         </div>
@@ -118,7 +122,7 @@ const Bottom = styled.div`
   gap: 20px;
   /* background-color: antiquewhite; */
   div {
-    background-color: #526cfe;
+    background-color: #1560fb;
     width: 30%;
     color: white;
     padding: 3%;
