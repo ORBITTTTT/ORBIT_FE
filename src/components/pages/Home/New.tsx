@@ -30,10 +30,13 @@ const New = (props: Props) => {
           <p>실시간으로 등록되는 새로운 프로젝트에 참여 해보세요.</p>
         </ProjectTitle>
         <div>
-          <p>더보기</p>
-          <BiRefresh size="25" />
+          <p style={{fontSize:13}}>더보기</p>
         </div>
       </Head>
+      <div style={{ width: '100%', textAlign: 'right' }}>
+        <BiRefresh size="25" />
+      </div>
+
       <ProjectOuter>
         {list.map((v, i) => (
           <ProjectBox key={i}>
@@ -54,10 +57,7 @@ const New = (props: Props) => {
                 <span>#{v.tag2}</span>
               </ProjectTag>
               <ProjectBottom>
-                <p>
-                  <span></span>
-                  {v.maker.name}({v.maker.roket}KM)
-                </p>
+                <p></p>
                 <p>
                   <span>
                     <AiFillHeart />
@@ -97,7 +97,7 @@ const Head = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   div {
     text-align: left;
   }
@@ -117,6 +117,7 @@ const ProjectOuter = styled.div`
   flex-direction: column;
   gap: 10px;
   height: 80%;
+  margin-top: 5px;
 `;
 
 const ProjectBox = styled.div`
@@ -207,7 +208,7 @@ const ProjectMaker = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-left: 1px solid gray;
+  border-left: 1px solid #ccc;
   font-size: 13px;
   gap: 10px;
   padding: 2%;

@@ -46,8 +46,9 @@ const HighView = (props: Props) => {
           <div>주목받는 프로젝트</div>
           <p>개발자 사이에서 가장 인기있는 프로젝트에 참여해보세요.</p>
         </ProjectTitle>
-        <div>더보기</div>
+        <div style={{ fontSize: 12 }}>더 보기</div>
       </Head>
+      <div></div>
       <Splide
         aria-labelledby="My Favorite Images"
         options={{
@@ -56,6 +57,7 @@ const HighView = (props: Props) => {
           rewind: true,
           gap: '1rem',
           padding: '4%',
+          
         }}
       >
         {list.map((v, i) => (
@@ -66,7 +68,9 @@ const HighView = (props: Props) => {
                   <span>프론트엔드</span>
                   <span>백엔드</span>
                 </p>
-                <p><AiOutlineHeart/></p>
+                <p>
+                  <AiOutlineHeart size={20} />
+                </p>
               </ProjectTop>
               <ProjectMid>
                 <div>{v.title}</div>
@@ -82,9 +86,13 @@ const HighView = (props: Props) => {
                   {v.maker.name}({v.maker.roket}KM)
                 </p>
                 <p>
-                  <span><AiFillHeart/></span>
+                  <span>
+                    <AiFillHeart size={15} />
+                  </span>
                   <span>{v.like}</span>
-                  <span><AiFillEye/></span>
+                  <span>
+                    <AiFillEye color={'#1560fb'} size={20} />
+                  </span>
                   <span>{v.view}</span>
                 </p>
               </ProjectBottom>
@@ -100,7 +108,9 @@ const HighView = (props: Props) => {
                   <span>프론트엔드</span>
                   <span>백엔드</span>
                 </p>
-                <p><AiOutlineHeart/></p>
+                <p>
+                  <AiOutlineHeart />
+                </p>
               </ProjectTop>
               <ProjectMid>
                 <div>{v.title}</div>
@@ -116,9 +126,13 @@ const HighView = (props: Props) => {
                   {v.maker.name}({v.maker.roket}KM)
                 </p>
                 <p>
-                  <span><AiFillHeart/></span>
+                  <span>
+                    <AiFillHeart size={15} />
+                  </span>
                   <span>{v.like}</span>
-                  <span><AiFillEye/></span>
+                  <span>
+                    <AiFillEye color={'#1560fb'} size={20} />
+                  </span>
                   <span>{v.view}</span>
                 </p>
               </ProjectBottom>
@@ -152,6 +166,7 @@ const Head = styled.div`
 const ProjectTitle = styled.div`
   display: flex;
   flex-direction: column;
+  margin-bottom: 20px;
   gap: 10px;
   div {
     font-size: 18px;
@@ -170,7 +185,8 @@ const ProjectBox = styled.div`
   padding: 4%;
   gap: 15px;
   padding-block: 30px;
-  box-shadow: 0px 10px 60px rgba(138, 149, 158, 0.2);
+  margin-top: 10px;
+  box-shadow: 0px 0px 30px rgba(138, 149, 158, 0.2);
 `;
 
 const ProjectTop = styled.div`
@@ -195,6 +211,7 @@ const ProjectMid = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  height: 50%;
   div:nth-child(1) {
     font-size: 19px;
     font-weight: 600;
@@ -221,6 +238,7 @@ const ProjectTag = styled.div`
   display: flex;
   font-size: 13px;
   gap: 5px;
+  color: #1560fb;
   span {
     font-weight: bold;
   }
@@ -234,6 +252,7 @@ const ProjectBottom = styled.div`
   p:nth-child(2) {
     display: flex;
     gap: 5px;
+    align-items: center;
   }
   p:nth-child(1) {
     display: flex;

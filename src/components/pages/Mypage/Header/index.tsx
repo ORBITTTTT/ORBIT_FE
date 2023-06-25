@@ -1,5 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { BsFillCircleFill, BsFillRocketFill } from 'react-icons/bs';
+import { IoMdPlanet } from 'react-icons/io';
+import { AiOutlineQuestionCircle } from 'react-icons/ai';
 
 type Props = {};
 
@@ -20,9 +23,20 @@ const index = (props: Props) => {
           <div>8 개</div>
         </Count>
         <Rocket>
-          <div>
-            
-          </div>
+          <RocketTitle>
+            <div>
+              잔디행성까지 <span>100m</span>
+            </div>
+            <AiOutlineQuestionCircle color='#1560FB'/>
+          </RocketTitle>
+          <p>행성간의 거리는 완료된 프로젝트 평점을 기반으로 산출됩니다.</p>
+          <RocketBar>
+            <IoMdPlanet style={{ position: 'absolute', color: '#A27E5F', left: -10 }} size={30} />
+            <BsFillCircleFill style={{ position: 'absolute', color: '#00C382', left: '50%' }} size={20} />
+            <BsFillRocketFill style={{ position: 'absolute', color: '#5b6461', left: '70%' }} size={30} />
+            <IoMdPlanet style={{ position: 'absolute', color: '#00C382', right: -10 }} size={30} />
+            <p>;</p>
+          </RocketBar>
         </Rocket>
       </BoxWrap>
     </Wrap>
@@ -36,7 +50,7 @@ const Wrap = styled.div`
   width: 100%;
   background-color: #1560fb;
   display: flex;
-
+  background: linear-gradient(183deg, rgba(21, 96, 251, 0.74) 0%, rgba(0, 195, 130, 0.58) 100%);
   /* justify-content: center; */
   /* margin-top: 80px; */
   padding-top: 80px;
@@ -102,7 +116,6 @@ const Count = styled.div`
     justify-content: center;
     align-items: center;
     font-size: 18px;
-
   }
 `;
 const Rocket = styled.div`
@@ -111,4 +124,33 @@ const Rocket = styled.div`
   border-radius: 10px;
   background-color: white;
   box-shadow: 0px 2px 6px rgba(138, 149, 158, 0.3);
+  padding: 20px;
+  p {
+    font-size: 12px;
+    font-weight: 300;
+  }
+`;
+
+const RocketBar = styled.div`
+  width: 90%;
+  /* background-color: red; */
+  margin: auto;
+  position: relative;
+  background: linear-gradient(to left, #0ec19b, #1560fb);
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  height: 10px;
+  /* background-color: #1560fb; */
+`;
+
+const RocketTitle = styled.div`
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  span {
+    color: blue;
+  }
 `;
