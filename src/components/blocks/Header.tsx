@@ -71,8 +71,8 @@ export default Header;
 
 const Container = styled.div`
   background-color: #fff;
-  box-shadow: 0px 0px 21px 0px rgba(89, 102, 122, 0.1);
-  border: 1px solid #000;
+  box-shadow: 0px 2px 6px rgba(138, 149, 158, 0.15);
+  /* border: 1px solid #000; */
   width: 100%;
   position: fixed;
   z-index: 99;
