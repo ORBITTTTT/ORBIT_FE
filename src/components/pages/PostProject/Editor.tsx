@@ -51,7 +51,7 @@ const Editor = (props: Props) => {
         modules={modules}
         formats={formats}
         onChange={handleChange}
-        placeholder="여기에 텍스트를 입력하세요..."
+        placeholder="프로젝트에 관한 설명을 적어주세요"
       />
     </EditorContainer>
   );
@@ -59,12 +59,14 @@ const Editor = (props: Props) => {
 
 export default Editor;
 const EditorContainer = styled.div`
-  margin-top: 30px;
+  margin-top: 48px;
   text-align: left;
   .ql-container {
     height: 500px;
   }
 `;
 const EditorTitle = styled.p`
-  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 19px;
+  margin-bottom: 28px;
 `;
