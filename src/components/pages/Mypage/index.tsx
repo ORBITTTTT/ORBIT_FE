@@ -47,7 +47,6 @@ const ProfileContainer = styled.div`
   width: 80%;
   max-width: 1600px;
   margin: 0 auto;
-  padding: 120px 0;
 `;
 
 const TabMenuContainer = styled.ul`

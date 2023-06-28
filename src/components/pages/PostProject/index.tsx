@@ -32,7 +32,6 @@ const PostProjectContainer = styled.div`
   width: 90%;
   max-width: 1230px;
   margin: 0 auto;
-  padding: 120px 0;
   text-align: right;
 `;
 const AddProjectBtnWrap = styled.div`

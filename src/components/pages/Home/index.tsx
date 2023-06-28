@@ -36,7 +36,6 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   gap: 20px;
-  padding-top: 120px;
   width: 100%;
   background-color: #ffffff;
 
