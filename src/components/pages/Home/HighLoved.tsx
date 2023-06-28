@@ -1,4 +1,5 @@
 import React from 'react';
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import styled from 'styled-components';
 
 type Props = {};
@@ -19,18 +20,20 @@ const HighLoved = (props: Props) => {
           <div>인기있는 프로젝트</div>
           <p>23.04.04 21:00 기준</p>
         </ProjectTitle>
-        <div>더보기</div>
+        <div style={{ fontSize: 13 }}>더보기</div>
       </Head>
       <List>
         {list.map((v, i) => (
-          <ProjectBox>
+          <ProjectBox key={i}>
+            <div>#프론트</div>
             <div>
               <span>{i + 1}</span>
-            </div>
-            <div>
-              <div>#프론트</div>
               <div>
-                <p>{v.name}</p> <p>하트 {v.view}</p>
+                <p>{v.name}</p>{' '}
+                <p>
+                  <AiFillHeart color="blue" size={15} />
+                  {v.view}
+                </p>
               </div>
             </div>
           </ProjectBox>
@@ -81,6 +84,7 @@ const List = styled.div`
 
 const ProjectBox = styled.div`
   display: flex;
+  flex-direction: column;
   /* justify-content: space-between; */
   align-items: center;
   background-color: white;
@@ -91,13 +95,18 @@ const ProjectBox = styled.div`
     display: flex;
     gap: 10px;
     /* align-items: center; */
-    flex-direction: column;
+    /* flex-direction: column; */
     width: 100%;
     div:nth-child(1) {
       width: 100%;
       font-size: 12px;
       font-weight: 500;
       color: #a2a2a2;
+    }
+    span {
+      font-size: 19px;
+      font-weight: bold;
+      color: #7e7e7e;
     }
     div:nth-child(2) {
       display: flex;
@@ -113,15 +122,15 @@ const ProjectBox = styled.div`
       p:nth-child(2) {
         font-size: 12px;
         font-weight: 400;
+        display: flex;
+        align-items: center;
       }
     }
   }
   div:nth-child(1) {
-    width: 10%;
-    span {
-      font-size: 19px;
-      font-weight: bold;
-      color: #7e7e7e;
-    }
+    width: 92%;
+    font-size: 12px;
+    font-weight: 400;
+    color: #7e7e7e;
   }
 `;

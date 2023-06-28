@@ -1,30 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Profile from './signup/Profile';
 import Job from './signup/Job';
 import Interest from './signup/Interest';
+import { IoMdClose } from 'react-icons/io';
+import Introduce from './signup/Introduce';
 
 type Props = { closeModal?: () => void; active: boolean };
 
-type Data = {
+interface Data {
   profile_img?: string;
-  name: string;
-  job: string;
-  interest: [];
+  name?: string;
+  job?: string;
+  interest?: string[];
   introduce?: string;
-  link?: [];
-};
+  link?: {
+    name?: string | null | undefined;
+    linkname?: string | null | undefined;
+  }[];
+}
 
 const LoginModal = ({ closeModal, active }: Props) => {
   const [page, setPage] = useState<number>(1);
   const [data, setData] = useState<Data>({ name: '', job: '', interest: [] });
   console.log(data);
+  useEffect(() => {
+    if (page >= 5) {
+      closeModal && closeModal();
+    }
+  }, [page]);
+
   return (
     <ModalWrap>
       <ModalBackGround onClick={closeModal} />
       <ModalContainer>
         <Close onClick={closeModal}>
-          <p>X</p>
+          <IoMdClose />
         </Close>
         {active && (
           <Main>
@@ -43,6 +54,7 @@ const LoginModal = ({ closeModal, active }: Props) => {
         {!active && page === 1 && <Profile data={data} setData={setData} setPage={setPage} page={page} />}
         {!active && page === 2 && <Job data={data} setData={setData} setPage={setPage} page={page} />}
         {!active && page === 3 && <Interest data={data} setData={setData} setPage={setPage} page={page} />}
+        {!active && page === 4 && <Introduce data={data} setData={setData} setPage={setPage} page={page} />}
       </ModalContainer>
     </ModalWrap>
   );

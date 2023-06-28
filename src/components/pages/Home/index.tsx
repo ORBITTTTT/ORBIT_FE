@@ -37,10 +37,14 @@ const Container = styled.div`
   align-items: center;
   gap: 20px;
   width: 100%;
+  padding-bottom: 0px;
+  /* height: 100%; */
   background-color: #ffffff;
-
+  @media screen and (max-width: 900px) {
+    padding-top: 115px;
+  }
   footer {
-    height: 130px;
+    height: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -54,6 +58,7 @@ const RowView = styled.div`
   width: 95%;
   /* background-color: #ddd; */
   gap: 2%;
+  margin-block: 40px;
 `;
 
 const Banner = styled.img`
