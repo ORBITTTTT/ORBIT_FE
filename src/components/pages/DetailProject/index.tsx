@@ -5,7 +5,6 @@ import ProjectInfo from './ProjectInfo';
 import HashTag from './HashTag';
 import Profile from './Profile';
 import CommentList from './CommentList';
-import MemberList from './MemberList';
 
 const index = () => {
   return (
@@ -14,10 +13,9 @@ const index = () => {
       <ProjectInfoWrap>
         <ProjectInfo />
         <HashTag />
+        <Profile />
         <CommentList />
       </ProjectInfoWrap>
-      <Profile />
-      <MemberList />
     </DetailProjectContainer>
   );
 };

@@ -150,6 +150,8 @@ html,
   *,body {
     font-family: 'Pretendard-Regular', Pretendard, sans-serif;
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
   a {
     text-decoration: none;
@@ -162,6 +164,9 @@ html,
     border: 0;
     cursor: pointer;
     color: inherit;
+  }
+  textarea,input{
+    outline: none;
   }
   // 스크롤바 제거
   * {

@@ -52,7 +52,6 @@ const AddProjectBtn = styled.button`
 `;
 const BannerWrap = styled.div`
   width: 100%;
-  padding-top: 98px;
   padding-bottom: 20px;
   display: flex;
   flex-direction: column;
