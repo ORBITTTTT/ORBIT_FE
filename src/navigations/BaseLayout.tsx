@@ -3,22 +3,19 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from '@pages/Home';
 import PostProject from '@pages/PostProject';
 import DetailProject from '@pages/DetailProject';
-import Header from '@components/blocks/Header';
 import Mypage from '@components/pages/Mypage';
+import Layout from '@components/blocks/Layout';
 
-type Props = {};
-
-const BaseLayout = (props: Props) => {
+const BaseLayout = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/*" element={<Header />} />
-      </Routes>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/mypage" element={<Mypage />} />
-        <Route path="/postproject" element={<PostProject />} />
-        <Route path="/project/:id" element={<DetailProject />} />
+        <Route element={<Layout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/mypage" element={<Mypage />} />
+          <Route path="/postproject" element={<PostProject />} />
+          <Route path="/project/:id" element={<DetailProject />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import LoginModal from '@components/blocks/LoginModal';
 import useOpenModal from '@hooks/modal';
 import assets from '@assets';
+import searchIcon from '@assets/search.svg';
 
 const Header = () => {
   const { isOpenModal, clickModal, closeModal } = useOpenModal();
@@ -29,7 +30,9 @@ const Header = () => {
                 setSearch(e.target.value);
               }}
             />
-            <button>🔍</button>
+            <button>
+              <img src={searchIcon} alt="검색아이콘" />
+            </button>
           </label>
           <SignInBtn onClick={clickModal}>로그인 | 회원가입</SignInBtn>
           <NewProjectBtn to="/postproject">새 프로젝트 생성</NewProjectBtn>

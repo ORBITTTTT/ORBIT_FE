@@ -1,29 +1,26 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
-  @font-face {
-    font-family: 'Pretendard';
-    src: url('../assets/fonts/Pretendard-Bold.woff2') format('woff2');
-    font-weight: 700;
-  }
-
-  @font-face {
-    font-family: 'Pretendard';
-    src: url('../assets/fonts/Pretendard-Regular.woff2') format('woff2');
-    font-weight: 400;
-  }
-
-  @font-face {
-    font-family: 'Pretendard';
-    src: url('../assets/fonts/Pretendard-Light.woff2') format('woff2');
+@font-face {
+    font-family: 'Pretendard-Light';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Light.woff') format('woff');
     font-weight: 300;
-  }
-  @font-face {
+    font-style: normal;
+}
+@font-face {
     font-family: 'Pretendard-Regular';
     src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
     font-weight: 400;
     font-style: normal;
 }
+@font-face {
+    font-family: 'Pretendard-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+
 
 html,
   body,
@@ -150,10 +147,11 @@ html,
     display: none;
   }
 
-  * {
-    font-family: 'Pretendard-Regular',Pretendard,
-     sans-serif;
+  *,body {
+    font-family: 'Pretendard-Regular', Pretendard, sans-serif;
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
   a {
     text-decoration: none;
@@ -166,6 +164,9 @@ html,
     border: 0;
     cursor: pointer;
     color: inherit;
+  }
+  textarea,input{
+    outline: none;
   }
   // 스크롤바 제거
   * {
