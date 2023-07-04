@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-interface ProjectInfoProps {}
-
 interface Data {
   '프로젝트 시작일자': string;
   모집인원: {
@@ -12,9 +10,16 @@ interface Data {
     PM: number;
   };
   설명: string;
+  '프로젝트 팀장': {
+    profileImg: string;
+    rocket: number;
+    nickname: string;
+    job: string;
+    description: string;
+  };
 }
 
-const ProjectInfo: React.FC<ProjectInfoProps> = () => {
+const ProjectInfo = () => {
   const data: Data = {
     '프로젝트 시작일자': '2023-06-29',
     모집인원: {
@@ -39,6 +44,15 @@ const ProjectInfo: React.FC<ProjectInfoProps> = () => {
     듣기만 청춘의 모래뿐일 끝까지 품고 대고, 사막이다. 이상은 같은 뭇 능히 귀는 예수는 것이 약동하다. 산야에 얼마나
     그것은 투명하되 황금시대다. 만천하의 있는 트고, 것이다. 실로 그들의 우리 그들은 전인 하는 보내는 속에서 청춘
     아니다`,
+    '프로젝트 팀장': {
+      profileImg: 'https://avatars.githubusercontent.com/u/88040809?v=4',
+      rocket: 100,
+      nickname: '강해보자고',
+      job: '프론트엔드',
+      description: `안녕하세요 저는 뭘 하고있는 나이름입니다. 성실하고 행복합니다 감사합니다.
+      이상은 같은 뭇 능히 귀는 예수는 것이 약동하다. 산야에 얼마나 그것은 투명하되 황금시대다. 만천하의 있는 트고, 것이다. 실로 그들의 우리 그들은 전인 하는 보내는 속에서 청춘
+      `,
+    },
   };
 
   const createMarkup = (text: string): { __html: string } => {
@@ -57,13 +71,16 @@ const ProjectInfo: React.FC<ProjectInfoProps> = () => {
                   {Object.entries(value).map(([role, count]) => (
                     <RoleWrap key={role}>
                       <RoleText>{role}</RoleText>
-                      <span>{count as React.ReactNode} </span>명
+                      <span>
+                        {count as React.ReactNode}
+                        <RoleColor> {'명'}</RoleColor>
+                      </span>
                     </RoleWrap>
                   ))}
                 </RoleContainer>
               </td>
             ) : (
-              <td dangerouslySetInnerHTML={createMarkup(value)} />
+              <Description dangerouslySetInnerHTML={createMarkup(value)} />
             )}
           </tr>
         ))}
@@ -96,9 +113,23 @@ const RoleContainer = styled.div`
   gap: 10px 154px;
 `;
 const RoleText = styled.p`
-  width: 180px;
+  width: 78px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #7e7e7e;
+`;
+const RoleColor = styled.span`
+  font-size: 18px;
+  font-weight: 500;
+  color: #7e7e7e;
+  margin-left: 9px;
 `;
 const RoleWrap = styled.div`
   display: flex;
   gap: 32px;
+`;
+const Description = styled.td`
+  color: #525252;
+  font-size: 16px;
+  font-weight: 300;
 `;

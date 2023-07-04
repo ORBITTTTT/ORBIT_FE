@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-
+import eyes from '@assets/detailProject/eyes.svg';
+import heart from '@assets/detailProject/heart.svg';
 const Title = () => {
   const [isHeart, setIsHeart] = useState(false);
 
@@ -16,8 +17,14 @@ const Title = () => {
           <ProjectDate>
             <p>프로젝트 등록일</p>
             <p>2023.07.25</p>
-            <p>180</p>
-            <p>1500</p>
+            <IconImg>
+              <img src={eyes} alt="하트아이콘" />
+              180
+            </IconImg>
+            <IconImg>
+              <img src={heart} alt="조회수아이콘" />
+              1500
+            </IconImg>
           </ProjectDate>
         </div>
         <BtnWrap>
@@ -70,5 +77,10 @@ const BtnWrap = styled.div`
   display: flex;
   justify-content: flex-end;
   gap: 10px;
+`;
+const IconImg = styled.p`
+  display: flex;
+  align-items: center;
+  gap: 5px;
 `;
 const HeartBtn = styled.button``;

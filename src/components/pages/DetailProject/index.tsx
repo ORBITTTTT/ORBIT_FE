@@ -26,6 +26,7 @@ const DetailProjectContainer = styled.table`
   width: 80%;
   max-width: 1200px;
   margin: 0 auto;
+  margin-top: 66px;
 `;
 
 const ProjectInfoWrap = styled.div`
