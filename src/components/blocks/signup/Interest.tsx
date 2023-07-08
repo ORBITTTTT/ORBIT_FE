@@ -2,14 +2,14 @@ import React, { Dispatch, SetStateAction, useState } from 'react';
 import styled from 'styled-components';
 import assets from '@assets';
 interface Data {
-  profile_img?: string;
+  userProfileImage?: string;
   name?: string;
-  job?: string;
-  interest?: string[];
+  userPositions?: string;
+  userInterestStacks?: string[];
   introduce?: string;
-  link?: {
-    name?: string | null | undefined;
-    linkname?: string | null | undefined;
+  userLinks?: {
+    profileLinkTitle?: string | null | undefined;
+    profileLink?: string | null | undefined;
   }[];
 }
 
@@ -67,7 +67,7 @@ const Interest = ({ data, setData, page, setPage }: Props) => {
       <Bottom>
         <div
           onClick={() => {
-            setData({ ...data, interest: list });
+            setData({ ...data, userInterestStacks: list });
 
             setPage(4);
           }}

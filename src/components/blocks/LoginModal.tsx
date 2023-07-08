@@ -9,10 +9,10 @@ import Introduce from './signup/Introduce';
 type Props = { closeModal?: () => void; active: boolean };
 
 interface Data {
-  profile_img?: string;
-  name?: string;
-  job?: string;
-  interest?: string[];
+  userProfileImage?: string;
+  userNickname?: string;
+  userPositions?: string;
+  userInterestStacks?: string[];
   introduce?: string;
   link?: {
     name?: string | null | undefined;
@@ -22,7 +22,7 @@ interface Data {
 
 const LoginModal = ({ closeModal, active }: Props) => {
   const [page, setPage] = useState<number>(1);
-  const [data, setData] = useState<Data>({ name: '', job: '', interest: [] });
+  const [data, setData] = useState<Data>({ userNickname: '', userPositions: '', userInterestStacks: [] });
   console.log(data);
   useEffect(() => {
     if (page >= 5) {

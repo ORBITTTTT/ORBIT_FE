@@ -12,10 +12,10 @@ const Index = () => {
   const fileInputRef = useRef<any>(null);
   const [data, setData] = useState({});
   interface Data {
-    profile_img?: string;
+    userProfileImage?: string;
     name?: string;
-    job?: string;
-    interest?: string[];
+    userPositions?: string;
+    userInterestStacks?: string[];
     introduce?: string;
     link?: {
       name?: string | null | undefined;

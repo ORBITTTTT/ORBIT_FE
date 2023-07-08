@@ -6,20 +6,20 @@ import React, { Dispatch, SetStateAction, useState } from 'react';
 import styled from 'styled-components';
 import { AiOutlineLink, AiOutlinePlusCircle, AiOutlineMinusCircle } from 'react-icons/ai';
 interface Data {
-  profile_img?: string;
-  name?: string;
-  job?: string;
-  interest?: string[];
+  userProfileImage?: string;
+  userNickname?: string;
+  userPositions?: string;
+  userInterestStacks?: string[];
   introduce?: string;
-  link?: {
-    name?: string | null | undefined;
-    linkname?: string | null | undefined;
+  userLinks?: {
+    profileLinkTitle?: string | null | undefined;
+    profileLink?: string | null | undefined;
   }[];
 }
 
 interface Link {
-  name?: string | null;
-  linkname?: string | null;
+  profileLinkTitle?: string | null;
+  profileLink?: string | null;
 }
 type Props = { page?: number; setData: Dispatch<SetStateAction<Data>>; data: Data; setPage: Function };
 
@@ -47,9 +47,9 @@ const Introduce = ({ data, setData, page, setPage }: Props) => {
                 <div>
                   <AiOutlineLink />
                 </div>
-                <div>{v.name}</div>
+                <div>{v.profileLinkTitle}</div>
                 <p></p>
-                <div>{v.linkname}</div>
+                <div>{v.profileLink}</div>
                 <AiOutlineMinusCircle
                   color="#FF8E72"
                   size={'1.2em'}
@@ -82,7 +82,7 @@ const Introduce = ({ data, setData, page, setPage }: Props) => {
               color="#1560FB"
               size={'1.2em'}
               onClick={() => {
-                const detail = { name: title, linkname: name };
+                const detail = { profileLinkTitle: title, profileLink: name };
                 setTitle('');
                 setName('');
                 setList([...list, detail]);
@@ -94,7 +94,7 @@ const Introduce = ({ data, setData, page, setPage }: Props) => {
       <Bottom>
         <div
           onClick={() => {
-            setData({ ...data, link: list });
+            setData({ ...data, userLinks: list });
             setPage(5);
           }}
         >

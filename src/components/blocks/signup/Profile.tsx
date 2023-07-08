@@ -7,14 +7,14 @@ import styled from 'styled-components';
 import { BsPencil } from 'react-icons/bs';
 
 interface Data {
-  profile_img?: string;
-  name?: string;
-  job?: string;
-  interest?: string[];
+  userProfileImage?: string;
+  userNickname?: string;
+  userPositions?: string;
+  userInterestStacks?: string[];
   introduce?: string;
-  link?: {
-    name?: string | null | undefined;
-    linkname?: string | null | undefined;
+  userLinks?: {
+    profileLinkTitle?: string | null | undefined;
+    profileLink?: string | null | undefined;
   }[];
 }
 
@@ -70,7 +70,7 @@ const Profile = ({ data, setData, page, setPage }: Props) => {
           type="text"
           maxLength={20}
           placeholder="닉네임을 입력하세요 (20자이내)"
-          onChange={(e) => setData({ ...data, name: e.target.value })}
+          onChange={(e) => setData({ ...data, userNickname: e.target.value })}
         />
         <input
           name="imgUpload"
