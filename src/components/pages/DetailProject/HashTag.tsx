@@ -19,7 +19,15 @@ const HashTagList = styled.ul`
   gap: 10px;
 `;
 const Hashtag = styled.li`
-  border: 1px solid #222;
-  border-radius: 5px;
-  padding: 5px 10px;
+  display: flex;
+  padding: 8px 16px;
+  align-items: center;
+  gap: 8px;
+  border-radius: 35px;
+  background: var(--pointcolor, #1560fb);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 160%;
+  letter-spacing: 0.105px;
 `;
