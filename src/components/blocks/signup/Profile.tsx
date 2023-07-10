@@ -5,27 +5,16 @@ import { type } from 'os';
 import React, { Dispatch, SetStateAction, useRef } from 'react';
 import styled from 'styled-components';
 import { BsPencil } from 'react-icons/bs';
-
-interface Data {
-  profile_img?: string;
-  name?: string;
-  job?: string;
-  interest?: string[];
-  introduce?: string;
-  link?: {
-    name?: string | null | undefined;
-    linkname?: string | null | undefined;
-  }[];
-}
+import { AuthState } from 'src/@types/auth';
 
 type SaveImg = {
   e: React.ChangeEvent<HTMLInputElement>;
   fileInputRef: any;
-  setData: Dispatch<SetStateAction<Data>>;
+  setData: Dispatch<SetStateAction<AuthState>>;
   data: {};
 };
 
-type Props = { page?: number; setData: Dispatch<SetStateAction<Data>>; data: Data; setPage: Function };
+type Props = { page?: number; setData: Dispatch<SetStateAction<AuthState>>; data: AuthState; setPage: Function };
 
 const Profile = ({ data, setData, page, setPage }: Props) => {
   const fileInputRef = useRef<any>(null);
@@ -70,7 +59,7 @@ const Profile = ({ data, setData, page, setPage }: Props) => {
           type="text"
           maxLength={20}
           placeholder="닉네임을 입력하세요 (20자이내)"
-          onChange={(e) => setData({ ...data, name: e.target.value })}
+          onChange={(e) => setData({ ...data, userNickname: e.target.value })}
         />
         <input
           name="imgUpload"

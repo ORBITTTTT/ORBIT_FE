@@ -1,18 +1,10 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import assets from '@assets';
-interface Data {
-  profile_img?: string;
-  name?: string;
-  job?: string;
-  interest?: string[];
-  introduce?: string;
-  link?: {
-    name?: string | null | undefined;
-    linkname?: string | null | undefined;
-  }[];
-}
-type Props = { page?: number; setData: Function; data: Data; setPage: Function };
+import { AuthState } from 'src/@types/auth';
+
+
+type Props = { page?: number; setData: Function; data: AuthState; setPage: Function };
 
 const Job = ({ data, setData, page, setPage }: Props) => {
   return (
@@ -24,33 +16,33 @@ const Job = ({ data, setData, page, setPage }: Props) => {
       <Mid>
         <div
           onClick={() => {
-            setData({ ...data, job: 'FE' });
+            setData({ ...data, userPositions: 'FE' });
           }}
-          style={{ backgroundColor: data.job === 'FE' ? '#1560FB' : undefined }}
+          style={{ backgroundColor: data.userPositions === 'FE' ? '#1560FB' : undefined }}
         >
           프론트엔드
         </div>
         <div
           onClick={() => {
-            setData({ ...data, job: 'BE' });
+            setData({ ...data, userPositions: 'BE' });
           }}
-          style={{ backgroundColor: data.job === 'BE' ? '#1560FB' : undefined }}
+          style={{ backgroundColor: data.userPositions === 'BE' ? '#1560FB' : undefined }}
         >
           백엔드
         </div>
         <div
           onClick={() => {
-            setData({ ...data, job: 'DE' });
+            setData({ ...data, userPositions: 'DE' });
           }}
-          style={{ backgroundColor: data.job === 'DE' ? '#1560FB' : undefined }}
+          style={{ backgroundColor: data.userPositions === 'DE' ? '#1560FB' : undefined }}
         >
           디자이너
         </div>
         <div
           onClick={() => {
-            setData({ ...data, job: 'PM' });
+            setData({ ...data, userPositions: 'PM' });
           }}
-          style={{ backgroundColor: data.job === 'PM' ? '#1560FB' : undefined }}
+          style={{ backgroundColor: data.userPositions === 'PM' ? '#1560FB' : undefined }}
         >
           PM
         </div>

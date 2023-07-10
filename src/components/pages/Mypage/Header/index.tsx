@@ -27,7 +27,7 @@ const index = (props: Props) => {
             <div>
               잔디행성까지 <span>100m</span>
             </div>
-            <AiOutlineQuestionCircle color='#1560FB'/>
+            <AiOutlineQuestionCircle color="#1560FB" />
           </RocketTitle>
           <p>행성간의 거리는 완료된 프로젝트 평점을 기반으로 산출됩니다.</p>
           <RocketBar>
@@ -54,6 +54,7 @@ const Wrap = styled.div`
   /* justify-content: center; */
   /* margin-top: 80px; */
   padding-top: 80px;
+  position: relative;
   align-items: baseline;
 `;
 
@@ -64,8 +65,9 @@ const Profile = styled.div`
   gap: 10px;
   align-items: end;
   flex-direction: row;
+  /* justify-content: center; */
   width: 100%;
-  padding-left: 100px;
+  padding-left: 18%;
   margin-top: 110px;
   p {
     color: white;
@@ -84,8 +86,9 @@ const BoxWrap = styled.div`
   width: 100%;
   padding: 0 120px;
   /* background-color: white; */
-  top: 243px;
+  bottom: -23px;
   display: flex;
+  justify-content: center;
   gap: 46px;
 `;
 

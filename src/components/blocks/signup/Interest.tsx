@@ -1,19 +1,9 @@
 import React, { Dispatch, SetStateAction, useState } from 'react';
 import styled from 'styled-components';
 import assets from '@assets';
-interface Data {
-  profile_img?: string;
-  name?: string;
-  job?: string;
-  interest?: string[];
-  introduce?: string;
-  link?: {
-    name?: string | null | undefined;
-    linkname?: string | null | undefined;
-  }[];
-}
+import { AuthState } from 'src/@types/auth';
 
-type Props = { page?: number; setData: Dispatch<SetStateAction<Data>>; data: Data; setPage: Function };
+type Props = { page?: number; setData: Dispatch<SetStateAction<AuthState>>; data: AuthState; setPage: Function };
 
 const Interest = ({ data, setData, page, setPage }: Props) => {
   const tech = [
@@ -32,7 +22,7 @@ const Interest = ({ data, setData, page, setPage }: Props) => {
     'Express',
   ];
   // const list: string[] = [];
-  const [list, setList] = useState<string[]>([]);
+  const [list, setList] = useState<{ stackName: string }[]>([]);
   console.log(list);
   return (
     <Wrap>
@@ -41,34 +31,36 @@ const Interest = ({ data, setData, page, setPage }: Props) => {
         <p>내가 관심있는 기술을 선택해주세요</p>
       </Top>
       <Mid>
-        {tech.map((v, i) => (
-          <img
-            src={`https://img.shields.io/badge/${v}-E1E1E1?style=for-the-badge&logo=${v}&logoColor=black`}
-            key={i}
-            onClick={() => {
-              if (list.includes(v)) {
-                let c = list.filter((a) => {
-                  return a !== v;
-                });
-                setList(c);
-              } else {
-                list.push(v);
-              }
-              console.log(list);
-            }}
-            style={{
-              backgroundColor: 'red',
-              borderRadius: 10,
-              border: list.includes(v) ? '1px solid red' : '1px solid black',
-            }}
-          />
-        ))}
+        {tech.map((v, i) => {
+          return (
+            <img
+              src={`https://img.shields.io/badge/${v}-E1E1E1?style=for-the-badge&logo=${v}`}
+              key={i}
+              onClick={() => {
+                const have = list.filter((c) => c.stackName == v).length == 0;
+                if (!have) {
+                  let c = list.filter((a) => {
+                    return a.stackName !== v;
+                  });
+                  setList(c);
+                } else {
+                  setList([...list, { stackName: v }]);
+                }
+                console.log(list);
+              }}
+              style={{
+                backgroundColor: 'red',
+                borderRadius: 10,
+                border: list.filter((c) => c.stackName == v).length !== 0 ? '1px solid red' : '1px solid black',
+              }}
+            />
+          );
+        })}
       </Mid>
       <Bottom>
         <div
           onClick={() => {
-            setData({ ...data, interest: list });
-
+            setData({ ...data, userInterestStacks: list });
             setPage(4);
           }}
         >

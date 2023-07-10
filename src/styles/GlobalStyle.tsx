@@ -177,6 +177,16 @@ html,
     }
   }
   
+  :root{
+    --front-end : #6494F9;
+    --back-end : #20CB92;
+    --design : #FF947E;
+    --etc : #BB84D5;
+    --main : #1560FB;
+    --sub-B : #00C382;
+    --sub-D :#FF856B;
+    --sub-P:#9B47C4
+  }
 `;
 
 export default GlobalStyle;
