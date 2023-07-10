@@ -147,12 +147,6 @@ const AddCommentBtn = styled.button`
   line-height: 160%;
   letter-spacing: 0.105px;
 `;
-const Content = styled.p`
-  color: var(--gray-2, #3e3e3e);
-  font-size: 14px;
-  font-weight: 300;
-  line-height: 20px;
-`;
 const CommentDate = styled.span`
   color: var(--gray-4, #a2a2a2);
   font-size: 13px;

@@ -3,7 +3,6 @@ import Title from './Title';
 import styled from 'styled-components';
 import ProjectInfo from './ProjectInfo';
 import HashTag from './HashTag';
-import Profile from './Profile';
 import CommentList from './CommentList';
 
 const index = () => {
@@ -13,7 +12,6 @@ const index = () => {
       <ProjectInfoWrap>
         <ProjectInfo />
         <HashTag />
-        <Profile />
         <CommentList />
       </ProjectInfoWrap>
     </DetailProjectContainer>

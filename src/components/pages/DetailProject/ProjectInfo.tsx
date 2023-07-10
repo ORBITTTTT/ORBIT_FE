@@ -79,6 +79,22 @@ const ProjectInfo = () => {
                   ))}
                 </RoleContainer>
               </td>
+            ) : key === '프로젝트 팀장' ? (
+              <td>
+                <TeamLeaderContaier>
+                  <TeamLeaderTitle>
+                    <TeamLeaderImgWrap>
+                      <TeamLeaderImg src={value.profileImg} alt="작성자프로필사진" />
+                    </TeamLeaderImgWrap>
+                    <RocketText>잔디행성까지 {value.rocket}m 남은</RocketText>
+                    <NicknameText>{value.nickname}</NicknameText>
+                  </TeamLeaderTitle>
+                  <TeamLeaderContainer>
+                    <PositionText>{value.job}</PositionText>
+                    <IntroduceText>{value.description}</IntroduceText>
+                  </TeamLeaderContainer>
+                </TeamLeaderContaier>
+              </td>
             ) : (
               <Description dangerouslySetInnerHTML={createMarkup(value)} />
             )}
@@ -102,8 +118,6 @@ const ProjectInfoContainer = styled.table`
     text-align: left;
     vertical-align: top;
   }
-  td {
-  }
 `;
 
 const RoleContainer = styled.div`
@@ -112,24 +126,95 @@ const RoleContainer = styled.div`
   display: flex;
   gap: 10px 154px;
 `;
+
 const RoleText = styled.p`
   width: 78px;
   font-size: 18px;
   font-weight: 500;
   color: #7e7e7e;
 `;
+
 const RoleColor = styled.span`
   font-size: 18px;
   font-weight: 500;
   color: #7e7e7e;
   margin-left: 9px;
 `;
+
 const RoleWrap = styled.div`
   display: flex;
   gap: 32px;
 `;
+
 const Description = styled.td`
   color: #525252;
   font-size: 16px;
   font-weight: 300;
+`;
+
+const TeamLeaderContaier = styled.div`
+  display: flex;
+  gap: 72px;
+  align-items: center;
+  padding: 8px 102px;
+  border-radius: 6px;
+  background: #f8f8f8;
+  box-shadow: 0px 2px 6px 0px rgba(138, 149, 158, 0.3);
+`;
+
+const TeamLeaderContainer = styled.div`
+  width: 600px;
+`;
+const TeamLeaderTitle = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 40px 0;
+`;
+
+const TeamLeaderImgWrap = styled.div`
+  width: 74px;
+  height: 74px;
+  border-radius: 100%;
+  overflow: hidden;
+`;
+
+const IntroduceText = styled.p`
+  color: var(--gray-2, #3e3e3e);
+  font-size: 14px;
+  font-weight: 300;
+`;
+
+const TeamLeaderImg = styled.img`
+  width: 74px;
+  height: 74px;
+  object-fit: contain;
+`;
+
+const NicknameText = styled.p`
+  color: #000;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: -0.475px;
+`;
+const RocketText = styled.p`
+  color: #3e3e3e;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: -0.35px;
+`;
+const PositionText = styled.p`
+  width: 64px;
+  border-radius: 35px;
+  border: 1.5px solid var(--tag-b, #6494f9);
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: -0.33px;
+  color: var(--tag-b, #6494f9);
+  margin-bottom: 24px;
 `;
