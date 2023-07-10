@@ -1,18 +1,10 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import assets from '@assets';
-interface Data {
-  userProfileImage?: string;
-  userNickname?: string;
-  userPositions?: string;
-  userInterestStacks?: string[];
-  introduce?: string;
-  link?: {
-    name?: string | null | undefined;
-    linkname?: string | null | undefined;
-  }[];
-}
-type Props = { page?: number; setData: Function; data: Data; setPage: Function };
+import { AuthState } from 'src/@types/auth';
+
+
+type Props = { page?: number; setData: Function; data: AuthState; setPage: Function };
 
 const Job = ({ data, setData, page, setPage }: Props) => {
   return (

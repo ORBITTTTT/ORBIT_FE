@@ -5,24 +5,14 @@ import Job from './signup/Job';
 import Interest from './signup/Interest';
 import { IoMdClose } from 'react-icons/io';
 import Introduce from './signup/Introduce';
+import { AuthState } from 'src/@types/auth';
 
 type Props = { closeModal?: () => void; active: boolean };
 
-interface Data {
-  userProfileImage?: string;
-  userNickname?: string;
-  userPositions?: string;
-  userInterestStacks?: string[];
-  introduce?: string;
-  link?: {
-    name?: string | null | undefined;
-    linkname?: string | null | undefined;
-  }[];
-}
 
 const LoginModal = ({ closeModal, active }: Props) => {
   const [page, setPage] = useState<number>(1);
-  const [data, setData] = useState<Data>({ userNickname: '', userPositions: '', userInterestStacks: [] });
+  const [data, setData] = useState<AuthState>({ userNickname: '', userPositions: '', userInterestStacks: [] });
   console.log(data);
   useEffect(() => {
     if (page >= 5) {

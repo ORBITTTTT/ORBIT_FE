@@ -5,27 +5,16 @@ import { type } from 'os';
 import React, { Dispatch, SetStateAction, useRef } from 'react';
 import styled from 'styled-components';
 import { BsPencil } from 'react-icons/bs';
-
-interface Data {
-  userProfileImage?: string;
-  userNickname?: string;
-  userPositions?: string;
-  userInterestStacks?: string[];
-  introduce?: string;
-  userLinks?: {
-    profileLinkTitle?: string | null | undefined;
-    profileLink?: string | null | undefined;
-  }[];
-}
+import { AuthState } from 'src/@types/auth';
 
 type SaveImg = {
   e: React.ChangeEvent<HTMLInputElement>;
   fileInputRef: any;
-  setData: Dispatch<SetStateAction<Data>>;
+  setData: Dispatch<SetStateAction<AuthState>>;
   data: {};
 };
 
-type Props = { page?: number; setData: Dispatch<SetStateAction<Data>>; data: Data; setPage: Function };
+type Props = { page?: number; setData: Dispatch<SetStateAction<AuthState>>; data: AuthState; setPage: Function };
 
 const Profile = ({ data, setData, page, setPage }: Props) => {
   const fileInputRef = useRef<any>(null);

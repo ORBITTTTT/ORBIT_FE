@@ -5,23 +5,15 @@ import { type } from 'os';
 import React, { Dispatch, SetStateAction, useState } from 'react';
 import styled from 'styled-components';
 import { AiOutlineLink, AiOutlinePlusCircle, AiOutlineMinusCircle } from 'react-icons/ai';
-interface Data {
-  userProfileImage?: string;
-  userNickname?: string;
-  userPositions?: string;
-  userInterestStacks?: string[];
-  introduce?: string;
-  userLinks?: {
-    profileLinkTitle?: string | null | undefined;
-    profileLink?: string | null | undefined;
-  }[];
-}
+import { AuthState } from 'src/@types/auth';
+
+
 
 interface Link {
   profileLinkTitle?: string | null;
   profileLink?: string | null;
 }
-type Props = { page?: number; setData: Dispatch<SetStateAction<Data>>; data: Data; setPage: Function };
+type Props = { page?: number; setData: Dispatch<SetStateAction<AuthState>>; data: AuthState; setPage: Function };
 
 const Introduce = ({ data, setData, page, setPage }: Props) => {
   const [list, setList] = useState<Link[]>([]);
@@ -38,7 +30,7 @@ const Introduce = ({ data, setData, page, setPage }: Props) => {
       </Top>
       <Mid>
         <InputWrap>
-          <textarea maxLength={1000} onChange={(e) => setData({ ...data, introduce: e.target.value })} />
+          <textarea maxLength={1000} onChange={(e) => setData({ ...data, userIntroduce: e.target.value })} />
         </InputWrap>
         <LinkWrap>
           <div style={{ overflowY: 'scroll', maxHeight: 69 }}>
