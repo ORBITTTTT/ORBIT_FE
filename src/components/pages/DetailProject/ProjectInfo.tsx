@@ -28,7 +28,7 @@ const ProjectInfo = () => {
       디자이너: 1,
       PM: 1,
     },
-    설명: ` 이 영락과 무엇을 품에 하는 길을 얼마나 사막이다.
+    설명: `이 영락과 무엇을 품에 하는 길을 얼마나 사막이다.
     <br />
     <br />
     피부가 행복스럽고 이상 어디 청춘을 얼마나 그들의 전인 사막이다. 두기 따뜻한 피고 길지 것이다. 얼음 되는 못할
@@ -54,6 +54,7 @@ const ProjectInfo = () => {
       `,
     },
   };
+  const hashTagList = ['Java', 'Java Script', 'Figma', 'Sketch', 'Spring', 'React'];
 
   const createMarkup = (text: string): { __html: string } => {
     return { __html: text };
@@ -62,28 +63,57 @@ const ProjectInfo = () => {
   return (
     <ProjectInfoContainer>
       <tbody>
-        {Object.entries(data).map(([key, value]) => (
-          <tr key={key}>
-            <th>{key}</th>
-            {key === '모집인원' ? (
-              <td>
-                <RoleContainer>
-                  {Object.entries(value).map(([role, count]) => (
-                    <RoleWrap key={role}>
-                      <RoleText>{role}</RoleText>
-                      <span>
-                        {count as React.ReactNode}
-                        <RoleColor> {'명'}</RoleColor>
-                      </span>
-                    </RoleWrap>
-                  ))}
-                </RoleContainer>
-              </td>
-            ) : (
-              <Description dangerouslySetInnerHTML={createMarkup(value)} />
-            )}
-          </tr>
-        ))}
+        {Object.entries(data).map(([key, value]) => {
+          return (
+            <>
+              <tr key={key}>
+                <th>{key}</th>
+                {key === '모집인원' ? (
+                  <td>
+                    <RoleContainer>
+                      {Object.entries(value).map(([role, count]) => (
+                        <RoleWrap key={role}>
+                          <RoleText>{role}</RoleText>
+                          <span>
+                            {count as React.ReactNode}
+                            <RoleColor> {'명'}</RoleColor>
+                          </span>
+                        </RoleWrap>
+                      ))}
+                    </RoleContainer>
+                  </td>
+                ) : key === '프로젝트 팀장' ? (
+                  <td>
+                    <TeamLeaderContaier>
+                      <TeamLeaderTitle>
+                        <TeamLeaderImgWrap>
+                          <TeamLeaderImg src={value.profileImg} alt="작성자프로필사진" />
+                        </TeamLeaderImgWrap>
+                        <RocketText>잔디행성까지 {value.rocket}m 남은</RocketText>
+                        <NicknameText>{value.nickname}</NicknameText>
+                      </TeamLeaderTitle>
+                      <TeamLeaderContainer>
+                        <PositionText>{value.job}</PositionText>
+                        <IntroduceText>{value.description}</IntroduceText>
+                      </TeamLeaderContainer>
+                    </TeamLeaderContaier>
+                  </td>
+                ) : (
+                  <>
+                    <Description dangerouslySetInnerHTML={createMarkup(value)} />
+                    {key === '설명' && (
+                      <HashTagList>
+                        {hashTagList.map((hashtag: string) => (
+                          <Hashtag>#{hashtag}</Hashtag>
+                        ))}
+                      </HashTagList>
+                    )}
+                  </>
+                )}
+              </tr>
+            </>
+          );
+        })}
       </tbody>
     </ProjectInfoContainer>
   );
@@ -102,8 +132,6 @@ const ProjectInfoContainer = styled.table`
     text-align: left;
     vertical-align: top;
   }
-  td {
-  }
 `;
 
 const RoleContainer = styled.div`
@@ -112,24 +140,117 @@ const RoleContainer = styled.div`
   display: flex;
   gap: 10px 154px;
 `;
+
 const RoleText = styled.p`
   width: 78px;
   font-size: 18px;
   font-weight: 500;
   color: #7e7e7e;
 `;
+
 const RoleColor = styled.span`
   font-size: 18px;
   font-weight: 500;
   color: #7e7e7e;
   margin-left: 9px;
 `;
+
 const RoleWrap = styled.div`
   display: flex;
   gap: 32px;
 `;
+
 const Description = styled.td`
   color: #525252;
   font-size: 16px;
   font-weight: 300;
+`;
+
+const TeamLeaderContaier = styled.div`
+  width: 100%;
+  display: flex;
+  gap: 72px;
+  align-items: center;
+  padding: 8px 102px;
+  border-radius: 6px;
+  background: #f8f8f8;
+  box-shadow: 0px 2px 6px 0px rgba(138, 149, 158, 0.3);
+`;
+
+const TeamLeaderContainer = styled.div`
+  width: 600px;
+`;
+const TeamLeaderTitle = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 40px 0px;
+`;
+
+const TeamLeaderImgWrap = styled.div`
+  width: 74px;
+  height: 74px;
+  border-radius: 100%;
+  overflow: hidden;
+`;
+
+const IntroduceText = styled.p`
+  width: 600px;
+  color: var(--gray-2, #3e3e3e);
+  font-size: 14px;
+  font-weight: 300;
+`;
+
+const TeamLeaderImg = styled.img`
+  width: 74px;
+  height: 74px;
+  object-fit: contain;
+`;
+
+const NicknameText = styled.p`
+  color: #000;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: -0.475px;
+`;
+const RocketText = styled.p`
+  color: #3e3e3e;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: -0.35px;
+`;
+const PositionText = styled.p`
+  width: 64px;
+  border-radius: 35px;
+  border: 1.5px solid var(--tag-b, #6494f9);
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: -0.33px;
+  color: var(--tag-b, #6494f9);
+  margin-bottom: 24px;
+`;
+
+const HashTagList = styled.ul`
+  margin-top: 32px;
+  display: flex;
+  gap: 8px;
+  margin-left: 180px;
+`;
+const Hashtag = styled.li`
+  display: flex;
+  padding: 8px 16px;
+  align-items: center;
+  gap: 8px;
+  border-radius: 35px;
+  background: var(--pointcolor, #1560fb);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 160%;
+  letter-spacing: 0.105px;
 `;
