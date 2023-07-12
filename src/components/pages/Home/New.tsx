@@ -19,8 +19,16 @@ const New = (props: Props) => {
       maker: { name: '안녕토마스', roket: '10' },
       like: 4,
       view: 23,
+      job: ['FE', 'DE', 'PM'],
     },
   ];
+
+  const JOB: { [key: string]: string } = {
+    FE: '프론트엔드',
+    BE: '백엔드',
+    PM: '프로젝트 매니저',
+    DE: '디자이너',
+  };
 
   return (
     <Container>
@@ -30,7 +38,7 @@ const New = (props: Props) => {
           <p>실시간으로 등록되는 새로운 프로젝트에 참여 해보세요.</p>
         </ProjectTitle>
         <div>
-          <p style={{fontSize:13}}>더보기</p>
+          <p style={{ fontSize: 13 }}>더보기</p>
         </div>
       </Head>
       <div style={{ width: '100%', textAlign: 'right' }}>
@@ -43,8 +51,11 @@ const New = (props: Props) => {
             <ProjectMain>
               <ProjectTop>
                 <p>
-                  <span>프론트엔드</span>
-                  <span>백엔드</span>
+                  {v.job.map((v, i) => (
+                    <TeamMember job={v} key={i}>
+                      #{JOB[v]}
+                    </TeamMember>
+                  ))}
                 </p>
                 <p></p>
               </ProjectTop>
@@ -147,12 +158,6 @@ const ProjectTop = styled.div`
   p:nth-child(1) {
     gap: 5px;
     display: flex;
-    span {
-      color: blue;
-      border: 1px solid blue;
-      padding: 5px;
-      border-radius: 5px;
-    }
   }
 `;
 
@@ -240,4 +245,27 @@ const ProjectMaker = styled.div`
     font-weight: 400;
     line-height: 18px;
   }
+`;
+
+const TeamMember = styled.span<{ job: string }>`
+  font-weight: bold;
+  padding: 5px;
+  border-radius: 25px;
+  color: ${(props) =>
+    props.job === 'FE'
+      ? `var(--front-end)`
+      : props.job === 'BE'
+      ? 'var(--back-end)'
+      : props.job === 'DE'
+      ? 'var(--design)'
+      : 'var(--etc)'};
+  border: 1.5px solid
+    ${(props) =>
+      props.job === 'FE'
+        ? `var(--front-end)`
+        : props.job === 'BE'
+        ? 'var(--back-end)'
+        : props.job === 'DE'
+        ? 'var(--design)'
+        : 'var(--etc)'};
 `;
