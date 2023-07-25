@@ -7,6 +7,7 @@ import Mypage from '@components/pages/Mypage';
 import Layout from '@components/blocks/Layout';
 import DirectUrl from '@pages/DirectUrl'
 
+
 const BaseLayout = () => {
   return (
     <BrowserRouter>
@@ -16,7 +17,7 @@ const BaseLayout = () => {
           <Route path="/mypage" element={<Mypage />} />
           <Route path="/postproject" element={<PostProject />} />
           <Route path="/project/:id" element={<DetailProject />} />
-          <Route path='/redirecturl/:type' element={<DirectUrl/>}/>
+          <Route path='/redirecturl/:type' element={<DirectUrl />} />
         </Route>
       </Routes>
     </BrowserRouter>
