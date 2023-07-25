@@ -1,24 +1,20 @@
 import React from 'react';
 import assets from '@assets';
 import Button from '@atoms/Button';
-import Clock from '@blocks/Clock';
+import Header from '@components/blocks/Header';
+import styled from 'styled-components';
 
 type Props = {};
 
 const Home = (props: Props) => {
   return (
-    <div>
-      <div>
-        <header>
-          <img src={assets.angry} alt="logo" />
-          <div>atoms</div>
-          <Button />
-          <div>blocks</div>
-          <Clock />
-        </header>
-      </div>
-    </div>
+    <Container>
+    </Container>
   );
 };
 
 export default Home;
+
+const Container = styled.div`
+  
+`
