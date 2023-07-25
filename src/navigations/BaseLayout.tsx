@@ -5,6 +5,7 @@ import PostProject from '@pages/PostProject';
 import DetailProject from '@pages/DetailProject';
 import Mypage from '@components/pages/Mypage';
 import Layout from '@components/blocks/Layout';
+import DirectUrl from '@pages/DirectUrl';
 
 const BaseLayout = () => {
   return (
@@ -15,6 +16,7 @@ const BaseLayout = () => {
           <Route path="/mypage" element={<Mypage />} />
           <Route path="/postproject" element={<PostProject />} />
           <Route path="/project/:id" element={<DetailProject />} />
+          <Route path='/redirecturl/:type' element={<DirectUrl />} />
         </Route>
       </Routes>
     </BrowserRouter>

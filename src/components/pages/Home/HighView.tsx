@@ -16,6 +16,7 @@ const HighView = (props: Props) => {
       title: '프로젝트1프로젝트1프로젝트1프로젝트1',
       desc: '이 프로젝트는 영국에서 시작되어 서울까지 번진 그런 프로젝트로 기깔나고 미친 듯한 팀원과 함께 이 모험을 함께 떠날 사람을 구합니다.이 프로젝트는 영국에서 시작되어 서울까지 번진 그런 프로젝트로 기깔나고 미친 듯한 팀원과 함께 이 모험을 함께 떠날 사람을 구합니다.',
       maker: { name: '안녕토마스', roket: '10' },
+      job: ['FE', 'DE'],
       like: 4,
       view: 23,
     },
@@ -24,6 +25,7 @@ const HighView = (props: Props) => {
       tag2: '자바',
       title: '프로젝트1',
       desc: '이 프로젝트는 영국에서 시작되어 서울까지 번진 그런 프로젝트로 기깔나고 미친 듯한 팀원과 함께 이 모험을 함께 떠날 사람을 구합니다.',
+      job: ['FE', 'DE', 'PM'],
       maker: { name: '안녕토마스', roket: '10' },
       like: 4,
       view: 23,
@@ -32,12 +34,20 @@ const HighView = (props: Props) => {
       tag1: '자바스크립트',
       tag2: '자바',
       title: '프로젝트1',
+      job: ['FE', 'DE', 'BE'],
       desc: '이 프로젝트는 영국에서 시작되어 서울까지 번진 그런 프로젝트로 기깔나고 미친 듯한 팀원과 함께 이 모험을 함께 떠날 사람을 구합니다.',
       maker: { name: '안녕토마스', roket: '10' },
       like: 4,
       view: 23,
     },
   ];
+
+  const JOB: { [key: string]: string } = {
+    FE: '프론트엔드',
+    BE: '백엔드',
+    PM: '프로젝트 매니저',
+    DE: '디자이너',
+  };
 
   return (
     <Container>
@@ -57,7 +67,6 @@ const HighView = (props: Props) => {
           rewind: true,
           gap: '1rem',
           padding: '4%',
-          
         }}
       >
         {list.map((v, i) => (
@@ -65,8 +74,11 @@ const HighView = (props: Props) => {
             <ProjectBox>
               <ProjectTop>
                 <p>
-                  <span>프론트엔드</span>
-                  <span>백엔드</span>
+                  {v.job.map((item, i) => (
+                    <TeamMember key={i} job={item}>
+                      {JOB[item]}
+                    </TeamMember>
+                  ))}
                 </p>
                 <p>
                   <AiOutlineHeart size={20} />
@@ -197,14 +209,30 @@ const ProjectTop = styled.div`
   p:nth-child(1) {
     gap: 5px;
     display: flex;
-    span {
-      color: #6fb5fb;
-      border: 1px solid #6fb5fb;
-      font-weight: bold;
-      padding: 5px;
-      border-radius: 25px;
-    }
   }
+`;
+
+const TeamMember = styled.span<{ job: string }>`
+  font-weight: bold;
+  padding: 5px;
+  border-radius: 25px;
+color: ${(props) =>
+    props.job === 'FE'
+      ? `var(--front-end)`  
+      : props.job === 'BE'
+      ? 'var(--back-end)'
+      : props.job === 'DE'
+      ? 'var(--design)'
+      : 'var(--etc)'};
+      border: 1.5px solid ${(props) =>  
+    props.job === 'FE'
+      ? `var(--front-end)`
+      : props.job === 'BE'
+      ? 'var(--back-end)'
+      : props.job === 'DE'
+      ? 'var(--design)'
+      : 'var(--etc)'};
+ 
 `;
 
 const ProjectMid = styled.div`
