@@ -19,6 +19,7 @@ type Props = { page?: number; setData: Dispatch<SetStateAction<AuthState>>; data
 const Profile = ({ data, setData, page, setPage }: Props) => {
   const fileInputRef = useRef<any>(null);
 
+  //* 이미지 저장
   const saveFileImage = async ({ e, fileInputRef, setData, data }: SaveImg) => {
     e.preventDefault();
     const formdata = new FormData();
@@ -40,6 +41,18 @@ const Profile = ({ data, setData, page, setPage }: Props) => {
       .then((res) => {})
       .catch((err) => {});
   };
+
+  //* 닉네임 중복 체크
+  const checkNickname = async () => {
+    await restApi
+      .post(`/users/profile/nickCheck?nickName=${data.userNickname}`)
+      .then((res) => {
+        setPage(2);
+      })
+      .catch((err) => {
+       // alert('닉네임 중복');
+      });
+  }
 
   return (
     <Wrap>

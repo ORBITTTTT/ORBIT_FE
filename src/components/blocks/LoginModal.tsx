@@ -99,8 +99,13 @@ const Main = styled.div`
   margin-top: 30px;
   z-index: 5;
   p {
-    padding: 3% 5%;
+    height: 45px;
+    width: 100%;
     border: 1px solid black;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;
 

@@ -1,11 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { IoMdClose } from 'react-icons/io';
+import { AiFillCheckCircle } from 'react-icons/ai';
+import SelectEvaluation from './SelectEvaluation';
 
 type Props = { closeModal?: () => void };
 
+interface Select {
+  userid: number;
+  userProfileImage: string;
+  userNickName: string;
+  userApplyJob: string;
+  evaluation: boolean;
+}
+
 const EvaluationModal = ({ closeModal }: Props) => {
-  const [page, setPage] = useState<number>(1);
+  const [page, setPage] = useState<number>(0);
+  const [select, setSelect] = useState<{ [key: string]: any }>({});
+  const [data, setData] = useState<{ [key: string]: any }>({});
+
   const test = [
     {
       userid: 12,
@@ -49,33 +62,73 @@ const EvaluationModal = ({ closeModal }: Props) => {
     PM: '기획자',
   };
 
+  const selectOne = (item: Select) => {
+    setSelect(item);
+    setPage(1);
+  };
+
+
+
   return (
     <ModalWrap>
       <ModalBackGround onClick={closeModal} />
-      <ModalContainer>
+      <ModalContainer page={page}>
         <Close onClick={closeModal}>
           <IoMdClose />
         </Close>
 
-        <Main>
-          <div>
-            <span>음악컨텐츠 관련 프...</span>
-            <span>프로젝트가 모두 마무리 되었습니다</span>
-          </div>
-          <div>프로젝트를 진행하면서 얻은 경험을 토대로 팀원들을 리뷰해주세요</div>
-          <TeamList>
-            {test.map((item, index) => (
+        {page === 0 ? (
+          <Main>
+            <div>
+              <span>음악컨텐츠 관련 프...</span>
+              <span>프로젝트가 모두 마무리 되었습니다</span>
+            </div>
+            <div>프로젝트를 진행하면서 얻은 경험을 토대로 팀원들을 리뷰해주세요</div>
+            <TeamList>
+              {test.map((item, index) => (
+                <div>
+                  <div style={{ position: 'relative' }} onClick={() => selectOne(item)}>
+                    <img src={item.userProfileImage} alt="" />
+                    {item.evaluation ? (
+                      <AiFillCheckCircle
+                        color={'var(--main)'}
+                        style={{
+                          position: 'absolute',
+                          top: 0,
+                          left: 0,
+                          zIndex: 10,
+                          fontSize: 25,
+                          backgroundColor: 'white',
+                          borderRadius: '50%',
+                        }}
+                      />
+                    ) : null}
+                  </div>
+                  <TeamMember job={item.userApplyJob}>
+                    <div>{JOB[item.userApplyJob]}</div>
+                  </TeamMember>
+                  <div style={{ fontSize: 14 }}>{item.userNickName}</div>
+                </div>
+              ))}
+            </TeamList>
+          </Main>
+        ) : page === 1 ? (
+          <Main>
+            <TeamList2 style={{ position: 'absolute', top: -40, left: 0 }}>
               <div>
-                <img src={item.userProfileImage} alt="" />
-                <TeamMember job={item.userApplyJob}>
-                  <div>{JOB[item.userApplyJob]}</div>
-                  <div>{item.userNickName}</div>
+                <img src={select?.userProfileImage} alt="" />
+                <TeamMember job={select?.userApplyJob}>
+                  <div style={{ fontSize: 13 }}>{JOB[select?.userApplyJob]}</div>
                 </TeamMember>
-                {item.evaluation ? <div>평가완료</div> : <div>평가하기</div>}
+                <div style={{ fontSize: 16 }}>{select?.userNickName}</div>
               </div>
-            ))}
-          </TeamList>
-        </Main>
+            </TeamList2>
+            <div style={{ fontSize: 13, marginTop: 40 }}>팀원에게 해당되는 문구를 모두 선택해주세요.</div>
+            <SelectEvaluation data={data} setData={setData} setPage={setPage} />
+          </Main>
+        ) : (
+          <Main></Main>
+        )}
       </ModalContainer>
     </ModalWrap>
   );
@@ -104,7 +157,7 @@ const ModalWrap = styled.div`
   z-index: 5;
 `;
 
-const ModalContainer = styled.div`
+const ModalContainer = styled.div<{ page: number }>`
   position: fixed;
   left: 50%;
   top: 50%;
@@ -112,12 +165,12 @@ const ModalContainer = styled.div`
   transform: translate(-50%, -50%);
   max-width: 960px;
   width: 1000px;
-  height: 630px;
+  ${(props) => (props.page === 0 || props.page === 2 ? `height: 520px;` : `height: 660px;`)}
   justify-content: center;
   text-align: center;
   font-size: 1em;
   background-color: white;
-  padding: 5%;
+  padding: 0px 4%;
   display: flex;
   flex-direction: column;
   z-index: 5;
@@ -126,7 +179,9 @@ const ModalContainer = styled.div`
 const Main = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  /* gap: 20px; */
+  justify-content: center;
+  align-items: center;
   margin-top: 30px;
   z-index: 5;
   p {
@@ -140,7 +195,7 @@ const Close = styled.div`
   display: flex;
   justify-content: space-between;
   font-size: 24px;
-  z-index: 5;
+  z-index: 25;
   top: 20px;
   right: 20px;
   cursor: pointer;
@@ -151,16 +206,39 @@ const TeamList = styled.div`
   width: 100%;
   justify-content: center;
   gap: 40px;
+
   img {
+    position: relative;
     width: 80px;
     height: 80px;
     background-color: 'gray';
     border-radius: 50%;
-    border: 0.5px solid black;
+    border: 0.5px solid #ccc;
+    background-color: white;
+  }
+`;
+
+const TeamList2 = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 40px;
+
+  img {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background-color: 'gray';
+    border-radius: 50%;
+    border: 0.5px solid #ccc;
+    background-color: white;
   }
 `;
 
 const TeamMember = styled.div<{ job: string }>`
+  font-size: 11px;
+  margin-block: 5px;
+  font-weight: bold;
   ${(props) =>
     props.job === 'FE'
       ? `color: var(--front-end)`
