@@ -66,13 +66,14 @@ const SelectEvaluation = (props: Props) => {
       <Wrap>
         <Row type="good">
           <img src={goody} />
-          {evaluate.good.map((item, index) => {
+          {evaluate.slice(0,5).map((item, index) => {
             return (
               <div
                 onClick={() => select(item.id, 'good')}
                 style={{
-                  backgroundColor: good.includes(item.id) ? 'var(--sub-B)' : 'white',
-                  color: good.includes(item.id) ? 'white' : 'black',
+                  color: good.includes(item.id) ? 'var(--main)' : 'black',
+                  // color: good.includes(item.id) ? 'white' : 'black',
+                  border: good.includes(item.id) ? '1px solid var(--main)' : '',
                 }}
               >
                 <span>{item.content}</span>
@@ -82,12 +83,12 @@ const SelectEvaluation = (props: Props) => {
         </Row>
         <Row type="soso">
           <img src={sosoy} />
-          {evaluate.soso.map((item, index) => {
+          {evaluate.slice(5,10).map((item, index) => {
             return (
               <div
                 onClick={() => select(item.id, 'soso')}
                 style={{
-                  backgroundColor: soso.includes(item.id) ? 'var(--sub-D)' : 'white',
+                  backgroundColor: soso.includes(item.id) ? 'var(--main)' : 'white',
                   color: soso.includes(item.id) ? 'white' : 'black',
                 }}
               >
@@ -98,7 +99,7 @@ const SelectEvaluation = (props: Props) => {
         </Row>
         <Row type="bad">
           <img src={bady} />
-          {evaluate.bad.map((item, index) => {
+          {evaluate.slice(10,15).map((item, index) => {
             return (
               <div
                 onClick={() => select(item.id, 'bad')}

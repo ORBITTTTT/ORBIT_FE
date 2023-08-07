@@ -185,7 +185,8 @@ html,
     --main : #1560FB;
     --sub-B : #00C382;
     --sub-D :#FF856B;
-    --sub-P:#9B47C4
+    --sub-P:#9B47C4;
+    --tag-fail : #FF4653
   }
 `;
 

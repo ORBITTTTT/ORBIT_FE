@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { IoMdClose } from 'react-icons/io';
 import { AiFillCheckCircle } from 'react-icons/ai';
 import SelectEvaluation from './SelectEvaluation';
+import { OutlinedInput, InputAdornment, Button } from '@mui/material';
 
 type Props = { closeModal?: () => void };
 
@@ -67,8 +68,6 @@ const EvaluationModal = ({ closeModal }: Props) => {
     setPage(1);
   };
 
-
-
   return (
     <ModalWrap>
       <ModalBackGround onClick={closeModal} />
@@ -127,7 +126,26 @@ const EvaluationModal = ({ closeModal }: Props) => {
             <SelectEvaluation data={data} setData={setData} setPage={setPage} />
           </Main>
         ) : (
-          <Main></Main>
+          <Main>
+            <div>
+              김백엔(프론트엔드)님에 대한 코멘트를 한마디로 남겨주세요!(필수)
+              <span style={{ color: 'gray' }}>지나친 비방은 자제해주세요!</span>
+            </div>
+
+            <OutlinedInput
+              type="text"
+              sx={{ width: '80%', border: '1px solid var(--main)', borderRadius: '10px', marginTop: '20px' }}
+              endAdornment={
+                <InputAdornment position="end" color="#ccc">
+                  50자 제한
+                </InputAdornment>
+              }
+              inputProps={{
+                maxLength: 50,
+              }}
+            />
+            <Btn onClick={closeModal}>완료하기</Btn>
+          </Main>
         )}
       </ModalContainer>
     </ModalWrap>
@@ -186,7 +204,7 @@ const Main = styled.div`
   z-index: 5;
   p {
     padding: 3% 5%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
   }
 `;
 
@@ -247,4 +265,15 @@ const TeamMember = styled.div<{ job: string }>`
       : props.job === 'DE'
       ? 'color: var(--design)'
       : 'color: var(--etc)'}
+`;
+
+const Btn = styled.div`
+  padding: 5px 32px;
+  background-color: var(--main);
+  color: white;
+  border-radius: 5px;
+  font-size: 14px;
+  line-height: 22px;
+  margin-top: 10px;
+  cursor: pointer;
 `;
