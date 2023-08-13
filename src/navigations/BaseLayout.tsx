@@ -6,6 +6,7 @@ import DetailProject from '@pages/DetailProject';
 import Mypage from '@components/pages/Mypage';
 import Layout from '@components/blocks/Layout';
 import DirectUrl from '@pages/DirectUrl'
+import ProjectList from '@components/pages/ProjectList';
 
 
 const BaseLayout = () => {
@@ -18,6 +19,7 @@ const BaseLayout = () => {
           <Route path="/postproject" element={<PostProject />} />
           <Route path="/project/:id" element={<DetailProject />} />
           <Route path='/redirecturl/:type' element={<DirectUrl />} />
+          <Route path='/projectlist' element={<ProjectList />} />
         </Route>
       </Routes>
     </BrowserRouter>

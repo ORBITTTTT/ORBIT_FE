@@ -4,8 +4,9 @@ import { IoMdClose } from 'react-icons/io';
 import { AiFillCheckCircle } from 'react-icons/ai';
 import SelectEvaluation from './SelectEvaluation';
 import { OutlinedInput, InputAdornment, Button } from '@mui/material';
+import apis, { restApi } from '@apis/index';
 
-type Props = { closeModal?: () => void };
+type Props = { closeModal?: () => void; selectedData: { [key: string]: any } };
 
 interface Select {
   userid: number;
@@ -15,7 +16,7 @@ interface Select {
   evaluation: boolean;
 }
 
-const EvaluationModal = ({ closeModal }: Props) => {
+const EvaluationModal = ({ closeModal, selectedData }: Props) => {
   const [page, setPage] = useState<number>(0);
   const [select, setSelect] = useState<{ [key: string]: any }>({});
   const [data, setData] = useState<{ [key: string]: any }>({});
@@ -66,6 +67,21 @@ const EvaluationModal = ({ closeModal }: Props) => {
   const selectOne = (item: Select) => {
     setSelect(item);
     setPage(1);
+  };
+
+  const sendEvaluation = () => {
+    restApi
+      .post('/evaluation', {
+        projectid: selectedData.projectid,
+        userid: select.userid,
+        evaluation: data,
+      })
+      .then((res) => {
+        closeModal && closeModal();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -142,6 +158,11 @@ const EvaluationModal = ({ closeModal }: Props) => {
               }
               inputProps={{
                 maxLength: 50,
+              }}
+              onChange={(e) => {
+                setData((prev) => {
+                  return { ...prev, comment: e.target.value };
+                });
               }}
             />
             <Btn onClick={closeModal}>완료하기</Btn>

@@ -152,6 +152,7 @@ html,
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    color: #3E3E3E;
   }
   a {
     text-decoration: none;
